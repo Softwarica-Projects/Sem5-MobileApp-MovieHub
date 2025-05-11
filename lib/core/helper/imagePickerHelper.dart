@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:eventhub/core/helper/uiHelpers.dart';
+import 'package:moviehub/core/helper/uiHelpers.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 

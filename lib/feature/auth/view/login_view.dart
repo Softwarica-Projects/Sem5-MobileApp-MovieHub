@@ -1,14 +1,14 @@
-import 'package:eventhub/core/constant/app_defaults.dart';
-import 'package:eventhub/core/helper/uiHelpers.dart';
-import 'package:eventhub/core/routes/routes.dart';
-import 'package:eventhub/core/utility/validator.dart';
-import 'package:eventhub/dependency_inject.dart';
-import 'package:eventhub/services/auth/auth_service.dart';
-import 'package:eventhub/services/core/preference_service.dart';
-import 'package:eventhub/widgets/custom_ink_well.dart';
-import 'package:eventhub/widgets/form_seperator_box.dart';
-import 'package:eventhub/widgets/form_title_widget.dart';
-import 'package:eventhub/widgets/visibility_widget.dart';
+import 'package:moviehub/core/constant/app_defaults.dart';
+import 'package:moviehub/core/helper/uiHelpers.dart';
+import 'package:moviehub/core/routes/routes.dart';
+import 'package:moviehub/core/utility/validator.dart';
+import 'package:moviehub/dependency_inject.dart';
+import 'package:moviehub/services/auth/auth_service.dart';
+import 'package:moviehub/services/core/preference_service.dart';
+import 'package:moviehub/widgets/custom_ink_well.dart';
+import 'package:moviehub/widgets/form_seperator_box.dart';
+import 'package:moviehub/widgets/form_title_widget.dart';
+import 'package:moviehub/widgets/visibility_widget.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatefulWidget {

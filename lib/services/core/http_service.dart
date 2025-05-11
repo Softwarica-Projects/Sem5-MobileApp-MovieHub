@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:eventhub/core/constant/api_url.dart';
-import 'package:eventhub/core/helper/uiHelpers.dart';
-import 'package:eventhub/core/routes/routes.dart';
-import 'package:eventhub/core/utility/exceptions/exception.dart';
-import 'package:eventhub/core/utility/extension.dart';
-import 'package:eventhub/services/core/preference_service.dart';
+import 'package:moviehub/core/constant/api_url.dart';
+import 'package:moviehub/core/helper/uiHelpers.dart';
+import 'package:moviehub/core/routes/routes.dart';
+import 'package:moviehub/core/utility/exceptions/exception.dart';
+import 'package:moviehub/core/utility/extension.dart';
+import 'package:moviehub/services/core/preference_service.dart';
 import 'package:flutter/material.dart';
 
 class HttpService {

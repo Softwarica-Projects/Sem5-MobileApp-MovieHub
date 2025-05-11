@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:eventhub/shared/model/cast_model.dart';
-import 'package:eventhub/shared/model/review_model.dart';
+import 'package:moviehub/shared/model/cast_model.dart';
+import 'package:moviehub/shared/model/review_model.dart';
 
 class MovieModel {
   final int id;

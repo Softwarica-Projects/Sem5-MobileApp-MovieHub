@@ -1,10 +1,10 @@
-import 'package:eventhub/core/constant/app_defaults.dart';
-import 'package:eventhub/core/constant/image_const.dart';
-import 'package:eventhub/core/routes/routes.dart';
-import 'package:eventhub/core/theme/app_colors.dart';
-import 'package:eventhub/dependency_inject.dart';
-import 'package:eventhub/services/core/preference_service.dart';
-import 'package:eventhub/widgets/form_seperator_box.dart';
+import 'package:moviehub/core/constant/app_defaults.dart';
+import 'package:moviehub/core/constant/image_const.dart';
+import 'package:moviehub/core/routes/routes.dart';
+import 'package:moviehub/core/theme/app_colors.dart';
+import 'package:moviehub/dependency_inject.dart';
+import 'package:moviehub/services/core/preference_service.dart';
+import 'package:moviehub/widgets/form_seperator_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:eventhub/core/constant/app_defaults.dart';
-import 'package:eventhub/core/routes/route_manager.dart';
-import 'package:eventhub/dependency_inject.dart';
+import 'package:moviehub/core/constant/app_defaults.dart';
+import 'package:moviehub/core/routes/route_manager.dart';
+import 'package:moviehub/dependency_inject.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

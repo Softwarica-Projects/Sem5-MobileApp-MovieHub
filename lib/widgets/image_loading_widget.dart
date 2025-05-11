@@ -1,4 +1,4 @@
-import 'package:eventhub/widgets/shrimmer.dart';
+import 'package:moviehub/widgets/shrimmer.dart';
 import 'package:flutter/material.dart';
 
 class ImageLoadingWidget extends StatelessWidget {

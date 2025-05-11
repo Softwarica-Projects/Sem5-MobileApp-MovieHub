@@ -1,5 +1,5 @@
-import 'package:eventhub/demodata.dart';
-import 'package:eventhub/services/core/http_service.dart';
+import 'package:moviehub/demodata.dart';
+import 'package:moviehub/services/core/http_service.dart';
 
 class GeneralService {
   final HttpService _httpService;

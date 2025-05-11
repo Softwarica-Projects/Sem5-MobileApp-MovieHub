@@ -1,4 +1,4 @@
-# eventhub
+# moviehub
 
 A new Flutter project.
 

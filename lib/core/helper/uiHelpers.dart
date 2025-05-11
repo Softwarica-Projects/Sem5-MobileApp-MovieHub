@@ -1,6 +1,6 @@
-import 'package:eventhub/core/constant/app_defaults.dart';
-import 'package:eventhub/widgets/error_dialog_widget.dart';
-import 'package:eventhub/widgets/form_seperator_box.dart';
+import 'package:moviehub/core/constant/app_defaults.dart';
+import 'package:moviehub/widgets/error_dialog_widget.dart';
+import 'package:moviehub/widgets/form_seperator_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:progress_dialog/progress_dialog.dart';

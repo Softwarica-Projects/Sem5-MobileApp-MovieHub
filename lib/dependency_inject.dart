@@ -1,5 +1,5 @@
-import 'package:eventhub/services/core/http_service.dart';
-import 'package:eventhub/services/core/preference_service.dart';
+import 'package:moviehub/services/core/http_service.dart';
+import 'package:moviehub/services/core/preference_service.dart';
 import 'package:get_it/get_it.dart';
 
 final locator = GetIt.instance;
