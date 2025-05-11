@@ -1,6 +1,10 @@
+import 'package:moviehub/services/auth/auth_service.dart';
 import 'package:moviehub/services/core/http_service.dart';
 import 'package:moviehub/services/core/preference_service.dart';
 import 'package:get_it/get_it.dart';
+import 'package:moviehub/services/general/general_service.dart';
+import 'package:moviehub/services/movie/movie_service.dart';
+import 'package:moviehub/services/user/user_service.dart';
 
 final locator = GetIt.instance;
 
@@ -17,7 +21,10 @@ setupDependencies() async {
   final httpService = locator<HttpService>();
 
   // // ///[Services]
-  // locator.registerSingleton<NotificationHandler>(NotificationHandler());
+  locator.registerSingleton<AuthService>(AuthService(httpService));
+  locator.registerSingleton<UserService>(UserService(httpService));
+  locator.registerSingleton<GeneralService>(GeneralService(httpService));
+  locator.registerSingleton<MovieService>(MovieService(httpService));
   // locator.registerSingleton<LocalNotificationService>(LocalNotificationService(locator<NotificationHandler>()));
   // locator.registerSingleton<FirebaseNotificationService>(FirebaseNotificationService(locator<NotificationHandler>()));
   // locator.registerSingleton<AuthService>(AuthService(httpService));

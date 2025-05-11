@@ -1,20 +1,24 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:moviehub/core/theme/app_colors.dart';
+import 'package:moviehub/widgets/form_seperator_box.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class ImageSlider extends StatefulWidget {
+class ViewSlider extends StatefulWidget {
   final int length;
   final bool autoPlay;
   final bool showPageIndicator;
   final double? height;
+  final double viewportFraction;
   final bool infiniteScroll;
   final Widget Function(BuildContext context, int index) builder;
 
-  const ImageSlider({
+  const ViewSlider({
     super.key,
     required this.length,
     this.autoPlay = true,
+    this.viewportFraction = 1,
     this.showPageIndicator = true,
     this.height,
     this.infiniteScroll = true,
@@ -22,10 +26,10 @@ class ImageSlider extends StatefulWidget {
   });
 
   @override
-  State<ImageSlider> createState() => _ImageSliderState();
+  State<ViewSlider> createState() => _ViewSliderState();
 }
 
-class _ImageSliderState extends State<ImageSlider> {
+class _ViewSliderState extends State<ViewSlider> {
   ValueNotifier<int> indexNotifier = ValueNotifier<int>(0);
   late final PageController controller;
   final imageController = CarouselSliderController();
@@ -38,7 +42,7 @@ class _ImageSliderState extends State<ImageSlider> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
         CarouselSlider.builder(
           itemCount: widget.length,
@@ -49,7 +53,7 @@ class _ImageSliderState extends State<ImageSlider> {
               autoPlayInterval: const Duration(seconds: 5),
               autoPlay: widget.length > 1 ? widget.autoPlay : false,
               enableInfiniteScroll: widget.length > 1 ? widget.infiniteScroll : false,
-              viewportFraction: 1,
+              viewportFraction: widget.viewportFraction,
               initialPage: 0,
               onPageChanged: widget.showPageIndicator
                   ? (i, r) {
@@ -57,35 +61,36 @@ class _ImageSliderState extends State<ImageSlider> {
                     }
                   : null),
         ),
-        if (widget.showPageIndicator && widget.length > 1)
-          Positioned(
-            bottom: 11,
-            right: 0,
-            left: 0,
-            child: Align(
-              alignment: Alignment.center,
-              child: ValueListenableBuilder<int>(
-                  valueListenable: indexNotifier,
-                  builder: (BuildContext context, int index, Widget? child) {
-                    return AnimatedSmoothIndicator(
-                      activeIndex: indexNotifier.value,
-                      count: widget.length,
-                      onDotClicked: (index) {
-                        imageController.animateToPage(index);
-                      },
-                      effect: ScrollingDotsEffect(
-                        spacing: 5.w,
-                        dotColor: const Color(0xff9494A9),
-                        activeDotColor: Colors.white,
-                        dotHeight: 8.sp,
-                        maxVisibleDots: 5,
-                        dotWidth: 8.sp,
-                      ),
-                    );
-                  }),
-            ),
-          ),
+        if (widget.showPageIndicator && widget.length > 1) ...[
+          FormSeperatorBox(),
+          pageIndicator(),
+        ]
       ],
+    );
+  }
+
+  Widget pageIndicator() {
+    return Align(
+      alignment: Alignment.center,
+      child: ValueListenableBuilder<int>(
+          valueListenable: indexNotifier,
+          builder: (BuildContext context, int index, Widget? child) {
+            return AnimatedSmoothIndicator(
+              activeIndex: indexNotifier.value,
+              count: widget.length,
+              onDotClicked: (index) {
+                imageController.animateToPage(index);
+              },
+              effect: ScrollingDotsEffect(
+                spacing: 5.w,
+                dotColor: AppColors.primaryBackgroundShade,
+                activeDotColor: AppColors.primary,
+                dotHeight: 8.sp,
+                maxVisibleDots: 5,
+                dotWidth: 8.sp,
+              ),
+            );
+          }),
     );
   }
 }

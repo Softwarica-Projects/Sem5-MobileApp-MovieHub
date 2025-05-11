@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/core/helper/uiHelpers.dart';
 import 'package:moviehub/core/routes/routes.dart';
@@ -22,7 +23,7 @@ class _LoginViewState extends State<LoginView> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  bool obscurePassword = false;
+  bool obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +52,17 @@ class _LoginViewState extends State<LoginView> {
                   title: "Password",
                   child: TextFormField(
                     obscureText: obscurePassword,
-                    controller: emailController,
+                    controller: passwordController,
                     decoration: InputDecoration(
-                        suffixIcon: VisibilityWidget(
-                      isVisibile: obscurePassword,
+                        suffixIcon: CustomInkWell(
+                      onTap: () {
+                        setState(() {
+                          obscurePassword = !obscurePassword;
+                        });
+                      },
+                      child: VisibilityWidget(
+                        isVisibile: !obscurePassword,
+                      ),
                     )),
                     validator: Validators.emptyFieldValidator,
                   ),
@@ -67,6 +75,10 @@ class _LoginViewState extends State<LoginView> {
                   child: CustomInkWell(
                     child: Text(
                       "Create an account?",
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                        fontSize: 12.sp,
+                      ),
                     ),
                     onTap: () {
                       Navigator.pushNamed(

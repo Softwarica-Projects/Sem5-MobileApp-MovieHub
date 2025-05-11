@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
   static const primary = Color(0xFF12CDD9);
-  static const primaryBackgroundShade = Color(0xff12CDD9);
+  static const primaryBackgroundShade = Color(0xff05E9F7);
 
   static const secondary = Color(0xffFF8700);
 
@@ -27,6 +27,7 @@ class AppColors {
     900: primary,
   });
 
+  static const cardBackgroundColor = Color(0xff252836);
   static const greenColor = Color(0xff50CD89);
   static const greenBackgroundShade = Color(0xffB3FADE);
   static const greenBackgroundShade2 = Color(0xffEFFDF7);

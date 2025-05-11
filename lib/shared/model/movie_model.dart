@@ -2,12 +2,12 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-
 import 'package:moviehub/shared/model/cast_model.dart';
 import 'package:moviehub/shared/model/review_model.dart';
 
 class MovieModel {
   final int id;
+  final int genreId;
   final String genre;
   final String? movieLink;
   final String? trailerLink;
@@ -21,6 +21,7 @@ class MovieModel {
   final List<ReviewModel> ratings;
   MovieModel({
     required this.id,
+    required this.genreId,
     required this.genre,
     this.movieLink,
     this.trailerLink,
@@ -36,6 +37,7 @@ class MovieModel {
 
   MovieModel copyWith({
     int? id,
+    int? genreId,
     String? genre,
     String? movieLink,
     String? trailerLink,
@@ -50,6 +52,7 @@ class MovieModel {
   }) {
     return MovieModel(
       id: id ?? this.id,
+      genreId: genreId ?? this.genreId,
       genre: genre ?? this.genre,
       movieLink: movieLink ?? this.movieLink,
       trailerLink: trailerLink ?? this.trailerLink,
@@ -67,6 +70,7 @@ class MovieModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
+      'genreId': genreId,
       'genre': genre,
       'movieLink': movieLink,
       'trailerLink': trailerLink,
@@ -84,6 +88,7 @@ class MovieModel {
   factory MovieModel.fromMap(Map<String, dynamic> map) {
     return MovieModel(
       id: map['id'] as int,
+      genreId: map['genreId'] as int,
       genre: map['genre'] as String,
       movieLink: map['movieLink'] != null ? map['movieLink'] as String : null,
       trailerLink: map['trailerLink'] != null ? map['trailerLink'] as String : null,
@@ -112,7 +117,7 @@ class MovieModel {
 
   @override
   String toString() {
-    return 'MovieModel(id: $id, genre: $genre, movieLink: $movieLink, trailerLink: $trailerLink, runtime: $runtime, releaseDate: $releaseDate, averageRating: $averageRating, coverImage: $coverImage, title: $title, description: $description, cast: $cast, ratings: $ratings)';
+    return 'MovieModel(id: $id, genreId: $genreId, genre: $genre, movieLink: $movieLink, trailerLink: $trailerLink, runtime: $runtime, releaseDate: $releaseDate, averageRating: $averageRating, coverImage: $coverImage, title: $title, description: $description, cast: $cast, ratings: $ratings)';
   }
 
   @override
@@ -120,6 +125,7 @@ class MovieModel {
     if (identical(this, other)) return true;
 
     return other.id == id &&
+        other.genreId == genreId &&
         other.genre == genre &&
         other.movieLink == movieLink &&
         other.trailerLink == trailerLink &&
@@ -136,6 +142,7 @@ class MovieModel {
   @override
   int get hashCode {
     return id.hashCode ^
+        genreId.hashCode ^
         genre.hashCode ^
         movieLink.hashCode ^
         trailerLink.hashCode ^

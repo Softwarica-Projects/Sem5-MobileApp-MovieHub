@@ -1,4 +1,5 @@
 import 'package:moviehub/demodata.dart';
+import 'package:moviehub/feature/genre/model/genre_model.dart';
 import 'package:moviehub/services/core/http_service.dart';
 
 class GeneralService {
@@ -6,8 +7,8 @@ class GeneralService {
 
   GeneralService(this._httpService);
 
-  Future<List<dynamic>> getGenres() async {
+  Future<List<GenreModel>> getGenres() async {
     await demoDelay();
-    return [];
+    return genreList;
   }
 }

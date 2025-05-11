@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/core/helper/uiHelpers.dart';
 import 'package:moviehub/core/utility/validator.dart';
@@ -59,10 +60,17 @@ class _SignupViewState extends State<SignupView> {
                   title: "Password",
                   child: TextFormField(
                     obscureText: obscurePassword,
-                    controller: emailController,
+                    controller: passwordController,
                     decoration: InputDecoration(
-                        suffixIcon: VisibilityWidget(
-                      isVisibile: obscurePassword,
+                        suffixIcon: CustomInkWell(
+                      onTap: () {
+                        setState(() {
+                          obscurePassword = !obscurePassword;
+                        });
+                      },
+                      child: VisibilityWidget(
+                        isVisibile: !obscurePassword,
+                      ),
                     )),
                     validator: Validators.emptyFieldValidator,
                   ),
@@ -75,6 +83,10 @@ class _SignupViewState extends State<SignupView> {
                   child: CustomInkWell(
                     child: Text(
                       "Already have an account?",
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                        fontSize: 12.sp,
+                      ),
                     ),
                     onTap: () {
                       Navigator.pop(

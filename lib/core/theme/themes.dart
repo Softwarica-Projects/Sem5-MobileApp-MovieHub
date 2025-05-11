@@ -44,17 +44,19 @@ class Themes {
         ),
         fontFamily: AppDefaults.fontFamily,
         appBarTheme: appBarTheme,
-        cardColor: Colors.white,
-        cardTheme: CardTheme(color: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.sp))),
+        cardColor: AppColors.cardBackgroundColor,
+        cardTheme: CardTheme(color: AppColors.cardBackgroundColor, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.sp))),
         textTheme: TextTheme(
           titleMedium: TextStyle(
             fontSize: 14.sp,
             fontFamily: AppDefaults.fontFamily,
+            color: Colors.white,
           ),
           displayMedium: TextStyle(
             fontSize: 16.sp,
             fontWeight: FontWeight.w600,
             fontFamily: AppDefaults.fontFamily,
+            color: Colors.white,
           ),
           headlineSmall: TextStyle(
             fontSize: 13.sp,
@@ -65,18 +67,23 @@ class Themes {
           headlineMedium: TextStyle(
             fontSize: 22.sp,
             fontWeight: FontWeight.w600,
+            color: Colors.white,
             fontFamily: AppDefaults.fontFamily,
           ),
           headlineLarge: TextStyle(
             fontSize: 30.sp,
             fontWeight: FontWeight.w600,
+            color: Colors.white,
             fontFamily: AppDefaults.fontFamily,
           ),
-
-          bodyMedium: TextStyle(
-            color: AppColors.headingSmallColor,
+          bodyLarge: TextStyle(
+            color: Colors.white,
             fontSize: 14.sp,
-            fontWeight: FontWeight.w600,
+          ),
+          bodyMedium: TextStyle(
+            color: Colors.white,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w400,
           ), //defaul text style
         ),
         radioTheme: const RadioThemeData(),
@@ -198,8 +205,8 @@ class Themes {
     centerTitle: true,
     titleSpacing: 0,
     backgroundColor: AppColors.kColorBackground,
-    actionsIconTheme: IconThemeData(size: 28.sp, color: AppColors.kInputDecorationIconColor),
-    iconTheme: IconThemeData(size: 24.sp, color: AppColors.headingSmallColor),
+    actionsIconTheme: IconThemeData(size: 24.sp, color: Colors.white),
+    iconTheme: IconThemeData(size: 24.sp, color: Colors.white),
     titleTextStyle: TextStyle(
       fontWeight: FontWeight.w600,
       fontSize: 18.sp,
@@ -220,12 +227,12 @@ class Themes {
       fontSize: 13.sp,
     ),
     border: boderStyle(color: AppColors.kBorderColor),
-    focusedBorder: boderStyle(color: AppColors.secondary),
+    focusedBorder: boderStyle(color: AppColors.primary),
     errorBorder: boderStyle(
       color: AppColors.kColorError,
     ),
     focusedErrorBorder: boderStyle(
-      color: AppColors.secondary,
+      color: AppColors.primary,
     ),
     disabledBorder: boderStyle(color: AppColors.kBorderColor),
     enabledBorder: boderStyle(color: AppColors.kBorderColor),
