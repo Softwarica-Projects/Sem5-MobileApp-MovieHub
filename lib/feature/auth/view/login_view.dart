@@ -1,0 +1,104 @@
+import 'package:eventhub/core/constant/app_defaults.dart';
+import 'package:eventhub/core/helper/uiHelpers.dart';
+import 'package:eventhub/core/routes/routes.dart';
+import 'package:eventhub/core/utility/validator.dart';
+import 'package:eventhub/dependency_inject.dart';
+import 'package:eventhub/services/auth/auth_service.dart';
+import 'package:eventhub/services/core/preference_service.dart';
+import 'package:eventhub/widgets/custom_ink_well.dart';
+import 'package:eventhub/widgets/form_seperator_box.dart';
+import 'package:eventhub/widgets/form_title_widget.dart';
+import 'package:eventhub/widgets/visibility_widget.dart';
+import 'package:flutter/material.dart';
+
+class LoginView extends StatefulWidget {
+  const LoginView({super.key});
+
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  final formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool obscurePassword = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Login",
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: AppDefaults.kPageSidePadding,
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                FormTitleWidget(
+                  title: "Email Address",
+                  child: TextFormField(
+                    controller: emailController,
+                    validator: Validators.emptyFieldValidator,
+                  ),
+                ),
+                FormSeperatorBox(),
+                FormTitleWidget(
+                  title: "Password",
+                  child: TextFormField(
+                    obscureText: obscurePassword,
+                    controller: emailController,
+                    decoration: InputDecoration(
+                        suffixIcon: VisibilityWidget(
+                      isVisibile: obscurePassword,
+                    )),
+                    validator: Validators.emptyFieldValidator,
+                  ),
+                ),
+                FormSeperatorBox(
+                  height: 8,
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: CustomInkWell(
+                    child: Text(
+                      "Create an account?",
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        Routes.signupPage,
+                      );
+                    },
+                  ),
+                ),
+                FormSeperatorBox(),
+                TextButton(
+                  onPressed: () {
+                    asyncCallHelperWithLoadingBar(context, processCall: () async {
+                      var data = await locator<AuthService>().login(
+                        emailController.text,
+                        passwordController.text,
+                      );
+                      locator<PreferenceService>().accessToken = data['access_token'];
+                    }, onSuccess: () {
+                      displayToastSuccess("Logged in successfully");
+                      Navigator.pushNamedAndRemoveUntil(context, Routes.homePage, (route) => false);
+                    });
+                    // Handle login
+                  },
+                  child: Text('Login'),
+                ),
+                FormSeperatorBox(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,4 +1,4 @@
-package com.softwarica.eventhub
+package com.softwarica.moviehub
 
 import io.flutter.embedding.android.FlutterActivity
 
