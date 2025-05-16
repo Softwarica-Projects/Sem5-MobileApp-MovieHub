@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:moviehub/feature/home/view/home_view.dart';
 import 'package:moviehub/feature/home/widget/bottom_bar.dart';
+import 'package:moviehub/feature/search/view/search_view.dart';
 import 'package:moviehub/feature/wishlist/view/wishlist_view.dart';
 
 class DashboadView extends StatefulWidget {
@@ -25,24 +26,27 @@ class _DashboadViewState extends State<DashboadView> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: ValueListenableBuilder<int>(
-          valueListenable: _tabBarIndex,
-          builder: (context, _, __) {
-            return BottomBar(
-                index: _tabBarIndex.value,
-                onTabChange: (index) {
-                  _tabBarController.animateTo(index);
-                });
-          }),
-      body: TabBarView(
-        controller: _tabBarController,
-        children: [
-          HomeView(),
-          SizedBox(),
-          WishlistView(),
-          SizedBox(),
-        ],
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        bottomNavigationBar: ValueListenableBuilder<int>(
+            valueListenable: _tabBarIndex,
+            builder: (context, _, __) {
+              return BottomBar(
+                  index: _tabBarIndex.value,
+                  onTabChange: (index) {
+                    _tabBarController.animateTo(index);
+                  });
+            }),
+        body: TabBarView(
+          controller: _tabBarController,
+          children: [
+            HomeView(),
+            SearchView(),
+            WishlistView(),
+            SizedBox(),
+          ],
+        ),
       ),
     );
   }

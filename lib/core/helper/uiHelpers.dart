@@ -130,6 +130,18 @@ void asyncCallHelperWithLoadingBar(BuildContext context, {required Future<dynami
   }
 }
 
+Widget movieReleaseOrNotChip(DateTime releaseDate) {
+  var isReleased = releaseDate.isBefore(DateTime.now());
+  return Chip(
+      // side: BorderSide.none,
+      // labelPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+      // padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      label: Text(isReleased ? "Released" : "Cmming Soon"),
+      backgroundColor: isReleased ? AppColors.primary : AppColors.secondary,
+      labelStyle: TextStyle(color: Colors.white, fontSize: 12.sp),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.sp)));
+}
+
 hideKeyboard(BuildContext context) {
   FocusScope.of(context).requestFocus(FocusNode());
 }

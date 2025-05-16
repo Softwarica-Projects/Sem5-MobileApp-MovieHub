@@ -108,7 +108,11 @@ class Themes {
           unselectedLabelColor: Colors.white,
         ),
         chipTheme: ChipThemeData(
+          side: BorderSide.none,
           deleteIconColor: Colors.white,
+          backgroundColor: AppColors.primary,
+          padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+          labelPadding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 0),
           labelStyle: TextStyle(fontSize: 14.sp, color: Colors.black, fontWeight: FontWeight.w400),
         ),
         checkboxTheme: CheckboxThemeData(
