@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/core/helper/uiHelpers.dart';
 import 'package:moviehub/dependency_inject.dart';
-import 'package:moviehub/feature/home/widget/grid_movie_widget.dart';
+import 'package:moviehub/feature/home/widget/grid_widget/grid_movie_shimmer.dart';
+import 'package:moviehub/feature/home/widget/grid_widget/grid_movie_shimmer_row.dart';
+import 'package:moviehub/feature/home/widget/grid_widget/grid_movie_widget.dart';
 import 'package:moviehub/services/movie/movie_service.dart';
 import 'package:moviehub/shared/model/movie_model.dart';
 import 'package:moviehub/widgets/form_seperator_box.dart';
@@ -15,6 +17,7 @@ class RecentlyAddedView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoadPageWidget<List<MovieModel>>(
+        loadingWidget: GridMovieShimmerRow(),
         futureFunction: locator<MovieService>().getRecentlyAdded(),
         builder: (context, data) {
           return Column(

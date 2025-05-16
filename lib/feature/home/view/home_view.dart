@@ -74,7 +74,7 @@ class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin 
   }
 
   Widget widgetSpacer() {
-    return SizedBox(height: 40.h);
+    return SizedBox(height: 30.h);
   }
 
   @override
