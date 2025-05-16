@@ -14,7 +14,7 @@ class RecentlyAddedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LoadPageWidget<MovieModel>(
+    return LoadPageWidget<List<MovieModel>>(
         futureFunction: locator<MovieService>().getRecentlyAdded(),
         builder: (context, data) {
           return Column(
@@ -26,7 +26,7 @@ class RecentlyAddedView extends StatelessWidget {
                 ),
                 child: Text(
                   "Recently Added",
-                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: Colors.white),
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
               ),
               FormSeperatorBox(),

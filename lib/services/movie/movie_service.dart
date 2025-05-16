@@ -31,7 +31,7 @@ class MovieService {
   }
 
   Future<MovieModel> getDetailById(int id) async {
-    await demoDelay();
+    // await demoDelay();
     return movieData.firstWhere((element) => element.id == id);
     // return {};
   }

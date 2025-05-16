@@ -17,7 +17,7 @@ class GenreView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LoadPageWidget<GenreModel>(
+    return LoadPageWidget<List<GenreModel>>(
         futureFunction: locator<GeneralService>().getGenres(),
         builder: (context, listData) {
           final data = [GenreModel(id: -1, name: "   All   "), ...listData];
@@ -33,7 +33,7 @@ class GenreView extends StatelessWidget {
                   children: [
                     Text(
                       "Genre",
-                      style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: Colors.white),
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
                     CustomInkWell(
                       onTap: () {

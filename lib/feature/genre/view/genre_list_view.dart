@@ -23,7 +23,7 @@ class _GenreListViewState extends State<GenreListView> {
       ),
       body: Padding(
         padding: AppDefaults.kPageSidePadding,
-        child: LoadPageWidget<GenreModel>(
+        child: LoadPageWidget<List<GenreModel>>(
           futureFunction: locator<GeneralService>().getGenres(),
           builder: (context, data) {
             return GridView.builder(

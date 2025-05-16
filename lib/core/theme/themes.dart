@@ -90,11 +90,11 @@ class Themes {
         tabBarTheme: TabBarTheme(
           dividerColor: Colors.transparent,
           indicatorSize: TabBarIndicatorSize.label,
-          indicatorColor: AppColors.tabLabelBoxColor,
+          indicatorColor: AppColors.primary,
           labelStyle: TextStyle(
             fontWeight: FontWeight.w500,
             fontFamily: AppDefaults.fontFamily,
-            color: AppColors.primary,
+            color: Colors.white,
             fontSize: 14.sp,
           ),
           unselectedLabelStyle: TextStyle(
@@ -103,12 +103,9 @@ class Themes {
             color: Colors.white,
             fontSize: 14.sp,
           ),
-          labelColor: const Color(0xff3F4254),
+          labelColor: Colors.white,
           labelPadding: EdgeInsets.symmetric(horizontal: 10.w),
-          unselectedLabelColor: const Color(0xff3F4254),
-
-          // dividerHeight: 2
-          // ,
+          unselectedLabelColor: Colors.white,
         ),
         chipTheme: ChipThemeData(
           deleteIconColor: Colors.white,
@@ -143,9 +140,9 @@ class Themes {
       );
   OutlinedButtonThemeData outlinedButtonTheme() => OutlinedButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: WidgetStateProperty.resolveWith<Color>((states) => AppColors.secondary),
-          side: WidgetStateProperty.resolveWith((states) => const BorderSide(color: AppColors.kBorderColor)),
-          iconColor: WidgetStateProperty.resolveWith((states) => AppColors.kHintColorText),
+          foregroundColor: WidgetStateProperty.resolveWith<Color>((states) => Colors.white),
+          side: WidgetStateProperty.resolveWith((states) => const BorderSide(color: AppColors.primary)),
+          iconColor: WidgetStateProperty.resolveWith((states) => Colors.white),
           textStyle: WidgetStateProperty.resolveWith((states) => TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w600,

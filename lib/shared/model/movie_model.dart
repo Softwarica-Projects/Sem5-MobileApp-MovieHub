@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+
 import 'package:moviehub/shared/model/cast_model.dart';
 import 'package:moviehub/shared/model/review_model.dart';
 
@@ -16,6 +17,7 @@ class MovieModel {
   final double averageRating;
   final String coverImage;
   final String title;
+  final String movieType;
   final String? description;
   final List<CastModel> cast;
   final List<ReviewModel> ratings;
@@ -30,6 +32,7 @@ class MovieModel {
     required this.averageRating,
     required this.coverImage,
     required this.title,
+    required this.movieType,
     this.description,
     required this.cast,
     required this.ratings,
@@ -46,6 +49,7 @@ class MovieModel {
     double? averageRating,
     String? coverImage,
     String? title,
+    String? movieType,
     String? description,
     List<CastModel>? cast,
     List<ReviewModel>? ratings,
@@ -61,6 +65,7 @@ class MovieModel {
       averageRating: averageRating ?? this.averageRating,
       coverImage: coverImage ?? this.coverImage,
       title: title ?? this.title,
+      movieType: movieType ?? this.movieType,
       description: description ?? this.description,
       cast: cast ?? this.cast,
       ratings: ratings ?? this.ratings,
@@ -79,6 +84,7 @@ class MovieModel {
       'averageRating': averageRating,
       'coverImage': coverImage,
       'title': title,
+      'movieType': movieType,
       'description': description,
       'cast': cast.map((x) => x.toMap()).toList(),
       'ratings': ratings.map((x) => x.toMap()).toList(),
@@ -97,6 +103,7 @@ class MovieModel {
       averageRating: map['averageRating'] as double,
       coverImage: map['coverImage'] as String,
       title: map['title'] as String,
+      movieType: map['movieType'] as String,
       description: map['description'] != null ? map['description'] as String : null,
       cast: List<CastModel>.from(
         (map['cast'] as List<int>).map<CastModel>(
@@ -117,7 +124,7 @@ class MovieModel {
 
   @override
   String toString() {
-    return 'MovieModel(id: $id, genreId: $genreId, genre: $genre, movieLink: $movieLink, trailerLink: $trailerLink, runtime: $runtime, releaseDate: $releaseDate, averageRating: $averageRating, coverImage: $coverImage, title: $title, description: $description, cast: $cast, ratings: $ratings)';
+    return 'MovieModel(id: $id, genreId: $genreId, genre: $genre, movieLink: $movieLink, trailerLink: $trailerLink, runtime: $runtime, releaseDate: $releaseDate, averageRating: $averageRating, coverImage: $coverImage, title: $title, movieType: $movieType, description: $description, cast: $cast, ratings: $ratings)';
   }
 
   @override
@@ -134,6 +141,7 @@ class MovieModel {
         other.averageRating == averageRating &&
         other.coverImage == coverImage &&
         other.title == title &&
+        other.movieType == movieType &&
         other.description == description &&
         listEquals(other.cast, cast) &&
         listEquals(other.ratings, ratings);
@@ -151,6 +159,7 @@ class MovieModel {
         averageRating.hashCode ^
         coverImage.hashCode ^
         title.hashCode ^
+        movieType.hashCode ^
         description.hashCode ^
         cast.hashCode ^
         ratings.hashCode;

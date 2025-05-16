@@ -13,7 +13,7 @@ class FeaturedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LoadPageWidget<MovieModel>(
+    return LoadPageWidget<List<MovieModel>>(
       futureFunction: locator<MovieService>().getFeatured(),
       builder: (context, data) => ViewSlider(
         height: 180.h,

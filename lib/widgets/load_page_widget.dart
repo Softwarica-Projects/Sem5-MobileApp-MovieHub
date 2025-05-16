@@ -4,8 +4,8 @@ import 'package:moviehub/widgets/center_hint_text.dart';
 import 'package:moviehub/widgets/loading_widget.dart';
 
 class LoadPageWidget<T> extends StatelessWidget {
-  final Future<List<T>> futureFunction;
-  final Widget Function(BuildContext context, List<T>) builder;
+  final Future<T> futureFunction;
+  final Widget Function(BuildContext context, T) builder;
   final Widget? errorWidget;
   final Widget? loadingWidget;
   final Widget? noDataWidget;
@@ -20,7 +20,7 @@ class LoadPageWidget<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<T>>(
+    return FutureBuilder<T>(
         future: futureFunction,
         builder: (c, x) {
           if (x.connectionState == ConnectionState.waiting) {
@@ -28,10 +28,10 @@ class LoadPageWidget<T> extends StatelessWidget {
           } else if (x.hasError) {
             return errorWidget ?? CenterHintText(text: x.error.toString());
           } else if (x.hasData) {
-            if (x.data == null || x.data!.isEmpty) {
+            if (x.data == null) {
               return noDataWidget ?? const CenterHintText(text: ("No Data Found"));
             }
-            return builder(context, x.data!);
+            return builder(context, x.data as T);
           } else {
             return noDataWidget ?? const CenterHintText(text: ("No Data Found"));
           }

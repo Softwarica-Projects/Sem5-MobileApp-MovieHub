@@ -1,5 +1,6 @@
 import 'package:moviehub/demodata.dart';
 import 'package:moviehub/services/core/http_service.dart';
+import 'package:moviehub/shared/model/movie_model.dart';
 
 class UserService {
   final HttpService _httpService;
@@ -40,8 +41,10 @@ class UserService {
     // return data['message'];
   }
 
-  Future<List<dynamic>> getFavouriteMovies() async {
+  Future<List<MovieModel>> getFavouriteMovies() async {
     await demoDelay();
-    return [];
+    var tt = [...movieData];
+    tt.shuffle();
+    return tt.take(5).toList();
   }
 }

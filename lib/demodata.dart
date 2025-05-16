@@ -6,6 +6,7 @@ import 'package:moviehub/shared/model/review_model.dart';
 Future<void> demoDelay() => Future.delayed(Duration(seconds: 2));
 final List<MovieModel> movieData = [
   MovieModel(
+    movieType: "Movie",
     id: 1,
     genreId: 101,
     genre: 'Action',
@@ -27,6 +28,7 @@ final List<MovieModel> movieData = [
     ],
   ),
   MovieModel(
+    movieType: "Series",
     id: 2,
     genreId: 102,
     genre: 'Drama',
@@ -47,6 +49,7 @@ final List<MovieModel> movieData = [
     ],
   ),
   MovieModel(
+    movieType: "Movie",
     id: 3,
     genreId: 103,
     genre: 'Sci-Fi',
@@ -68,6 +71,7 @@ final List<MovieModel> movieData = [
     ],
   ),
   MovieModel(
+    movieType: "Movie",
     id: 4,
     genreId: 104,
     genre: 'Horror',
@@ -88,6 +92,7 @@ final List<MovieModel> movieData = [
     ],
   ),
   MovieModel(
+    movieType: "Movie",
     id: 5,
     genreId: 105,
     genre: 'Comedy',
@@ -105,10 +110,16 @@ final List<MovieModel> movieData = [
     ],
     ratings: [
       ReviewModel(user: 'comedylover', review: 'I laughed so much!', rating: 4.3),
+      ReviewModel(user: 'puzzlefan', review: 'Smart and gripping.', rating: 4.5),
+      ReviewModel(user: 'fantasyfan', review: 'Magical and epic.', rating: 4.6),
+      ReviewModel(user: 'comedylover', review: 'I laughed so much!', rating: 4.3),
+      ReviewModel(user: 'puzzlefan', review: 'Smart and gripping.', rating: 4.5),
+      ReviewModel(user: 'fantasyfan', review: 'Magical and epic.', rating: 4.6),
     ],
   ),
   MovieModel(
     id: 6,
+    movieType: "Series",
     genreId: 106,
     genre: 'Thriller',
     movieLink: null,
@@ -130,6 +141,7 @@ final List<MovieModel> movieData = [
   MovieModel(
     id: 7,
     genreId: 107,
+    movieType: "Movie",
     genre: 'Fantasy',
     movieLink: null,
     trailerLink: 'https://youtube.com/watch?v=fantasy7',
@@ -149,6 +161,7 @@ final List<MovieModel> movieData = [
   ),
   MovieModel(
     id: 8,
+    movieType: "Movie",
     genreId: 108,
     genre: 'Biography',
     movieLink: null,
@@ -169,6 +182,7 @@ final List<MovieModel> movieData = [
   ),
   MovieModel(
     id: 9,
+    movieType: "Series",
     genreId: 109,
     genre: 'Adventure',
     movieLink: null,
@@ -188,6 +202,7 @@ final List<MovieModel> movieData = [
     ],
   ),
   MovieModel(
+    movieType: "Serie",
     id: 10,
     genreId: 110,
     genre: 'Romance',
@@ -209,6 +224,7 @@ final List<MovieModel> movieData = [
   ),
   MovieModel(
     id: 11,
+    movieType: "Movie",
     genreId: 111,
     genre: 'Animation',
     movieLink: null,
@@ -230,6 +246,7 @@ final List<MovieModel> movieData = [
   MovieModel(
     id: 12,
     genreId: 112,
+    movieType: "Movie",
     genre: 'Mystery',
     movieLink: null,
     trailerLink: 'https://youtube.com/watch?v=mystery12',
@@ -250,6 +267,7 @@ final List<MovieModel> movieData = [
   MovieModel(
     id: 13,
     genreId: 113,
+    movieType: "Movie",
     genre: 'Musical',
     movieLink: null,
     trailerLink: 'https://youtube.com/watch?v=musical13',
@@ -269,6 +287,7 @@ final List<MovieModel> movieData = [
   ),
   MovieModel(
     id: 14,
+    movieType: "Movie",
     genreId: 114,
     genre: 'Documentary',
     movieLink: null,
@@ -287,6 +306,7 @@ final List<MovieModel> movieData = [
   MovieModel(
     id: 15,
     genreId: 115,
+    movieType: "Series",
     genre: 'Crime',
     movieLink: null,
     trailerLink: 'https://youtube.com/watch?v=crime15',
