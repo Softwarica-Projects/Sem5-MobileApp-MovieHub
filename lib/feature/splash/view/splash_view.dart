@@ -25,6 +25,7 @@ class _SplashViewState extends State<SplashView> {
   processNavigation() async {
     await Future.delayed(Duration(seconds: 2));
     final prefs = locator<PreferenceService>();
+    prefs.accessToken = "";
     late final String toPage;
     if (prefs.accessToken.isEmpty) {
       toPage = Routes.loginPage;
