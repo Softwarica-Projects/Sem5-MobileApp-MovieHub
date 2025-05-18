@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/core/routes/routes.dart';
 import 'package:moviehub/shared/model/movie_model.dart';
 import 'package:moviehub/widgets/custom_ink_well.dart';

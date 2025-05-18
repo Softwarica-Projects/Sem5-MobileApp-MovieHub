@@ -5,8 +5,7 @@ import 'package:moviehub/core/helper/ui_helpers.dart';
 import 'package:moviehub/core/routes/routes.dart';
 import 'package:moviehub/core/theme/app_colors.dart';
 import 'package:moviehub/dependency_inject.dart';
-// import 'package:moviehub/feature/home/widget/genre/genre_tab_shimmer.dart';
-// import 'package:moviehub/feature/home/widget/genre/genre_tabs_shimmer_row.dart';
+import 'package:moviehub/feature/home/widget/genre/genre_tabs_shimmer_row.dart';
 import 'package:moviehub/feature/home/widget/genre/tab_genre_widget.dart';
 import 'package:moviehub/services/general/general_service.dart';
 import 'package:moviehub/shared/model/genre_model.dart';
@@ -20,7 +19,7 @@ class GenreView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoadPageWidget<List<GenreModel>>(
-        // loadingWidget: GenreTabsShimmerRow(),
+        loadingWidget: GenreTabsShimmerRow(),
         futureFunction: locator<GeneralService>().getGenres(),
         builder: (context, listData) {
           final data = [GenreModel(id: -1, name: "   All   "), ...listData];

@@ -5,7 +5,6 @@ import 'package:moviehub/core/routes/routes.dart';
 import 'package:moviehub/feature/home/widget/rating_widget.dart';
 import 'package:moviehub/shared/model/movie_model.dart';
 import 'package:moviehub/widgets/custom_ink_well.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
 import 'package:moviehub/widgets/image_widget.dart';
 
 class GridMovieWidget extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/core/helper/ui_helpers.dart';
 import 'package:moviehub/dependency_inject.dart';
-// import 'package:moviehub/feature/home/widget/grid_widget/grid_movie_shimmer_row.dart';
+import 'package:moviehub/feature/home/widget/grid_widget/grid_movie_shimmer_row.dart';
 import 'package:moviehub/feature/home/widget/grid_widget/grid_movie_widget.dart';
 import 'package:moviehub/services/movie/movie_service.dart';
 import 'package:moviehub/shared/model/movie_model.dart';
@@ -16,7 +16,7 @@ class PouplarView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoadPageWidget<List<MovieModel>>(
-        // loadingWidget: GridMovieShimmerRow(),
+        loadingWidget: GridMovieShimmerRow(),
         futureFunction: locator<MovieService>().getMostPopular(),
         builder: (context, data) {
           return Column(
