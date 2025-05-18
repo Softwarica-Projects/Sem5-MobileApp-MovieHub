@@ -1,16 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
-import 'package:moviehub/core/helper/uiHelpers.dart';
+import 'package:moviehub/core/helper/ui_helpers.dart';
 import 'package:moviehub/core/utility/validator.dart';
 import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/auth/model/signup_model.dart';
 import 'package:moviehub/services/auth/auth_service.dart';
-import 'package:moviehub/services/core/preference_service.dart';
 import 'package:moviehub/widgets/custom_ink_well.dart';
 import 'package:moviehub/widgets/form_seperator_box.dart';
 import 'package:moviehub/widgets/form_title_widget.dart';
 import 'package:moviehub/widgets/visibility_widget.dart';
-import 'package:flutter/material.dart';
 
 class SignupView extends StatefulWidget {
   const SignupView({super.key});
