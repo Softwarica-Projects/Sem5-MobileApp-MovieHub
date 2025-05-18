@@ -11,12 +11,40 @@ class DashboadView extends StatefulWidget {
 }
 
 class _DashboadViewState extends State<DashboadView> with SingleTickerProviderStateMixin {
+  late final TabController _tabBarController;
+  ValueNotifier<int> _tabBarIndex = ValueNotifier(0);
+  @override
+  void initState() {
+    super.initState();
+    _tabBarController = TabController(length: 4, vsync: this);
+    _tabBarController.addListener(() {
+      _tabBarIndex.value = _tabBarController.index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
       child: Scaffold(
-        body: HomeView(),
+        bottomNavigationBar: ValueListenableBuilder<int>(
+            valueListenable: _tabBarIndex,
+            builder: (context, _, __) {
+              return BottomBar(
+                  index: _tabBarIndex.value,
+                  onTabChange: (index) {
+                    _tabBarController.animateTo(index);
+                  });
+            }),
+        body: TabBarView(
+          controller: _tabBarController,
+          children: [
+            HomeView(),
+            SizedBox(),
+            SizedBox(),
+            SizedBox(),
+          ],
+        ),
       ),
     );
   }
