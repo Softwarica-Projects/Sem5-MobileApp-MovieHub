@@ -23,7 +23,7 @@ class _SignupViewState extends State<SignupView> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  bool obscurePassword = false;
+  bool obscurePassword = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,6 +98,10 @@ class _SignupViewState extends State<SignupView> {
                 FormSeperatorBox(),
                 TextButton(
                   onPressed: () {
+                    hideKeyboard(context);
+                    if (!formKey.currentState!.validate()) {
+                      return;
+                    }
                     asyncCallHelperWithLoadingBar(context, processCall: () async {
                       await locator<AuthService>().register(SignupModel(
                         email: emailController.text,

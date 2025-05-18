@@ -29,19 +29,6 @@ class _LoginViewState extends State<LoginView> {
   @override
   void initState() {
     super.initState();
-    initialize();
-  }
-
-  initialize() async {
-    await Future.delayed(const Duration(seconds: 2)).then((value) {
-      String nextRoute = Routes.loginPage;
-      if (locator<PreferenceService>().accessToken.isNotEmpty) {
-        nextRoute = Routes.homePage;
-      } else {
-        nextRoute = Routes.loginPage;
-      }
-      Navigator.pushNamedAndRemoveUntil(context, nextRoute, (route) => false);
-    });
   }
 
   @override
@@ -110,6 +97,10 @@ class _LoginViewState extends State<LoginView> {
                 FormSeperatorBox(),
                 TextButton(
                   onPressed: () {
+                    hideKeyboard(context);
+                    if (formKey.currentState!.validate() == false) {
+                      return;
+                    }
                     asyncCallHelperWithLoadingBar(context, processCall: () async {
                       var data = await locator<AuthService>().login(LoginModel(email: emailController.text, password: passwordController.text));
                       locator<PreferenceService>().accessToken = data['access_token'];

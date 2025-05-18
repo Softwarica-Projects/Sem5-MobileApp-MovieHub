@@ -17,32 +17,35 @@ class BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GNav(
-        gap: 8,
-        selectedIndex: index,
-        onTabChange: onTabChange,
-        color: Color(0xff92929D),
-        activeColor: AppColors.primary,
-        iconSize: 24,
-        tabBackgroundColor: AppColors.kColorBackground,
-        padding: EdgeInsets.symmetric(horizontal: AppDefaults.kPageSidePadding.left.h, vertical: 12.h),
-        tabs: [
-          GButton(
-            icon: Icons.home,
-            text: 'Home',
-          ),
-          GButton(
-            icon: Icons.search,
-            text: 'Search',
-          ),
-          GButton(
-            icon: Icons.favorite,
-            text: 'Wishlist',
-          ),
-          GButton(
-            icon: Icons.account_circle_rounded,
-            text: 'Profile',
-          )
-        ]);
+    return SafeArea(
+      top: false,
+      child: GNav(
+          gap: 8,
+          selectedIndex: index,
+          onTabChange: onTabChange,
+          color: Color(0xff92929D),
+          activeColor: AppColors.primary,
+          iconSize: 24,
+          tabBackgroundColor: AppColors.kColorBackground,
+          padding: EdgeInsets.symmetric(horizontal: AppDefaults.kPageSidePadding.left.h, vertical: 12.h),
+          tabs: [
+            GButton(
+              icon: Icons.home,
+              text: 'Home',
+            ),
+            GButton(
+              icon: Icons.search,
+              text: 'Search',
+            ),
+            GButton(
+              icon: Icons.favorite,
+              text: 'Wishlist',
+            ),
+            GButton(
+              icon: Icons.account_circle_rounded,
+              text: 'Profile',
+            )
+          ]),
+    );
   }
 }
