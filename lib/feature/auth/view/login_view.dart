@@ -27,6 +27,24 @@ class _LoginViewState extends State<LoginView> {
   bool obscurePassword = true;
 
   @override
+  void initState() {
+    super.initState();
+    initialize();
+  }
+
+  initialize() async {
+    await Future.delayed(const Duration(seconds: 2)).then((value) {
+      String nextRoute = Routes.loginPage;
+      if (locator<PreferenceService>().accessToken.isNotEmpty) {
+        nextRoute = Routes.homePage;
+      } else {
+        nextRoute = Routes.loginPage;
+      }
+      Navigator.pushNamedAndRemoveUntil(context, nextRoute, (route) => false);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
