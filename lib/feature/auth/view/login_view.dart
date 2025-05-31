@@ -103,6 +103,8 @@ class _LoginViewState extends State<LoginView> {
                     }
                     asyncCallHelperWithLoadingBar(context, processCall: () async {
                       var data = await locator<AuthService>().login(LoginModel(email: emailController.text, password: passwordController.text));
+
+                      // throw ("");
                       locator<PreferenceService>().accessToken = data['access_token'];
                     }, onSuccess: () {
                       displayToastSuccess("Logged in successfully");

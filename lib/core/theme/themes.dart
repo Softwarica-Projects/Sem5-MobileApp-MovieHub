@@ -1,4 +1,5 @@
 import 'package:moviehub/core/constant/app_defaults.dart';
+import 'package:moviehub/core/helper/ui_helpers.dart';
 import 'package:moviehub/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,17 @@ class Themes {
 
   ThemeData theme() {
     return ThemeData(
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: AppColors.kColorBackground,
+          selectedIconTheme: IconThemeData(
+            size: 24.sp,
+            color: AppColors.primary,
+          ),
+          unselectedIconTheme: IconThemeData(
+            size: 24.sp,
+            color: Color(0xff92929D),
+          ),
+        ),
         navigationBarTheme: const NavigationBarThemeData(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
@@ -200,14 +212,14 @@ class Themes {
       );
   final AppBarTheme appBarTheme = AppBarTheme(
     elevation: 0.0,
-    toolbarHeight: kToolbarHeight.h,
+    toolbarHeight: AppDefaults.appBarheight,
     foregroundColor: Colors.white,
     scrolledUnderElevation: 0,
     centerTitle: true,
     titleSpacing: 0,
     backgroundColor: AppColors.kColorBackground,
-    actionsIconTheme: IconThemeData(size: 24.sp, color: Colors.white),
-    iconTheme: IconThemeData(size: 24.sp, color: Colors.white),
+    actionsIconTheme: IconThemeData(size: 22.sp, color: Colors.white),
+    iconTheme: IconThemeData(size: 22.sp, color: Colors.white),
     titleTextStyle: TextStyle(
       fontWeight: FontWeight.w600,
       fontSize: 18.sp,
@@ -218,9 +230,13 @@ class Themes {
   final InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
     filled: false,
     errorMaxLines: 2,
+    suffixIconConstraints: BoxConstraints(
+      minHeight: 28.sp,
+      minWidth: 28.sp,
+    ),
     labelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 13.sp),
     hintStyle: TextStyle(color: AppColors.kHintColorText, fontWeight: FontWeight.w500, fontSize: 14.sp),
-    contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 12.w),
+    contentPadding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
     iconColor: AppColors.kInputDecorationIconColor,
     errorStyle: TextStyle(
       color: AppColors.kColorError,

@@ -8,7 +8,7 @@ class GridMovieShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RectangularShrimmer(
-      size: Size(150.w, 200.h), // Match movie poster size
+      size: Size(150, 200.h), // Match movie poster size
       borderRadius: 12.sp,
     );
   }

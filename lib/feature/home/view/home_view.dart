@@ -23,12 +23,12 @@ class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin 
     return Scaffold(
       appBar: AppBar(
         titleSpacing: AppDefaults.kPageSidePadding.left,
-        // leading: SizedBox(),
         centerTitle: false,
         title: Row(
           children: [
             CircularImageWidget(
               radius: 20,
+              fit: BoxFit.fill,
             ),
             adaptableWidth(width: 14),
             Column(
@@ -56,9 +56,8 @@ class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin 
       body: SingleChildScrollView(
         child: Column(
           children: [
-            FormSeperatorBox(height: 20.h),
+            FormSeperatorBox(height: 20),
             FeaturedView(),
-
             widgetSpacer(),
             GenreView(),
             widgetSpacer(),
