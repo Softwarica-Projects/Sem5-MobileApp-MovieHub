@@ -6,6 +6,7 @@ import 'package:moviehub/dependency_inject.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:toastification/toastification.dart';
 
 import '../core/routes/routes.dart';
@@ -31,17 +32,32 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         designSize: const Size(375, 812),
-        builder: (context, child) => ToastificationWrapper(
-              child: MaterialApp(
-                navigatorKey: navigatorKey,
-                debugShowCheckedModeBanner: false,
-                initialRoute: Routes.splashPage,
-                themeMode: ThemeMode.dark,
-                title: AppDefaults.appName,
-                theme: Themes().theme(),
-                onGenerateRoute: onGenerateRoute,
-              ),
-            ));
+        builder: (_context, child) {
+          AppDefaults.deviceType = MediaQuery.sizeOf(_context).width > 600 ? DeviceType.tablet : DeviceType.mobile;
+          return ToastificationWrapper(
+            child: MaterialApp(
+              navigatorKey: navigatorKey,
+              debugShowCheckedModeBanner: false,
+              initialRoute: Routes.splashPage,
+              themeMode: ThemeMode.dark,
+              title: AppDefaults.appName,
+              builder: (context, child) {
+                return ResponsiveWrapper.builder(child,
+                    defaultScale: true,
+                    breakpoints: [
+                      ResponsiveBreakpoint.resize(100, name: MOBILE),
+                      ResponsiveBreakpoint.resize(480, name: MOBILE),
+                      ResponsiveBreakpoint.resize(800, name: TABLET),
+                      ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+                      ResponsiveBreakpoint.autoScale(2460, name: '4K'),
+                    ],
+                    background: Container(color: Color(0xFFF5F5F5)));
+              },
+              theme: Themes().theme(),
+              onGenerateRoute: onGenerateRoute,
+            ),
+          );
+        });
   }
 }
 

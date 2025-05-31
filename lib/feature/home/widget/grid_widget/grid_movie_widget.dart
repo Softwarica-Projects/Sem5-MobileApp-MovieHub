@@ -27,7 +27,7 @@ class GridMovieWidget extends StatelessWidget {
       },
       child: SizedBox(
         height: 230.h,
-        width: 160.w,
+        width: 165.w,
         child: Card(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8.sp),

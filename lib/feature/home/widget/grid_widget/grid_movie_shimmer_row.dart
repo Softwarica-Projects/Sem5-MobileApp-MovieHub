@@ -10,12 +10,12 @@ class GridMovieShimmerRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: AppDefaults.kPageSidePadding.left),
-      child: SizedBox(
-        height: 180.h,
+      child: AspectRatio(
+        aspectRatio: 2,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemCount: 6,
-          separatorBuilder: (_, __) => const SizedBox(width: 12),
+          separatorBuilder: (_, __) => SizedBox(width: 12.w),
           itemBuilder: (context, index) => const GridMovieShimmer(),
         ),
       ),

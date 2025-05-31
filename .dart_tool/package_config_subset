@@ -1,7 +1,7 @@
 progress_dialog
 2.12
-file:///Users/aria/.pub-cache/git/progress-dialog-8933bb7f8f5b9ec0ddc1666d9054a1f8dafd2f37/
-file:///Users/aria/.pub-cache/git/progress-dialog-8933bb7f8f5b9ec0ddc1666d9054a1f8dafd2f37/lib/
+file:///Users/aria/.pub-cache/git/progress-dialog-acc9845feeee3eed04344d863b4a8527d1c6ec71/
+file:///Users/aria/.pub-cache/git/progress-dialog-acc9845feeee3eed04344d863b4a8527d1c6ec71/lib/
 args
 3.3
 file:///Users/aria/.pub-cache/hosted/pub.dev/args-2.7.0/
@@ -87,9 +87,9 @@ file_selector_linux
 file:///Users/aria/.pub-cache/hosted/pub.dev/file_selector_linux-0.9.3+2/
 file:///Users/aria/.pub-cache/hosted/pub.dev/file_selector_linux-0.9.3+2/lib/
 file_selector_macos
-3.3
-file:///Users/aria/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.4+2/
-file:///Users/aria/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.4+2/lib/
+3.6
+file:///Users/aria/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.4+3/
+file:///Users/aria/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.4+3/lib/
 file_selector_platform_interface
 3.0
 file:///Users/aria/.pub-cache/hosted/pub.dev/file_selector_platform_interface-2.6.2/
@@ -274,6 +274,10 @@ plugin_platform_interface
 3.0
 file:///Users/aria/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8/
 file:///Users/aria/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8/lib/
+responsive_framework
+2.17
+file:///Users/aria/.pub-cache/hosted/pub.dev/responsive_framework-0.2.0/
+file:///Users/aria/.pub-cache/hosted/pub.dev/responsive_framework-0.2.0/lib/
 rxdart
 2.12
 file:///Users/aria/.pub-cache/hosted/pub.dev/rxdart-0.28.0/
@@ -423,9 +427,9 @@ vector_graphics_codec
 file:///Users/aria/.pub-cache/hosted/pub.dev/vector_graphics_codec-1.1.13/
 file:///Users/aria/.pub-cache/hosted/pub.dev/vector_graphics_codec-1.1.13/lib/
 vector_graphics_compiler
-3.4
-file:///Users/aria/.pub-cache/hosted/pub.dev/vector_graphics_compiler-1.1.16/
-file:///Users/aria/.pub-cache/hosted/pub.dev/vector_graphics_compiler-1.1.16/lib/
+3.6
+file:///Users/aria/.pub-cache/hosted/pub.dev/vector_graphics_compiler-1.1.17/
+file:///Users/aria/.pub-cache/hosted/pub.dev/vector_graphics_compiler-1.1.17/lib/
 vector_math
 2.14
 file:///Users/aria/.pub-cache/hosted/pub.dev/vector_math-2.1.4/

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:moviehub/feature/home/view/home_view.dart';
 import 'package:moviehub/feature/home/widget/bottom_bar.dart';
+import 'package:moviehub/widgets/center_hint_text.dart';
 
 class DashboadView extends StatefulWidget {
   const DashboadView({super.key});
@@ -40,9 +41,9 @@ class _DashboadViewState extends State<DashboadView> with SingleTickerProviderSt
           controller: _tabBarController,
           children: [
             HomeView(),
-            SizedBox(),
-            SizedBox(),
-            SizedBox(),
+            CenterHintText(text: "Search Page"),
+            CenterHintText(text: "Wishlist Page"),
+            CenterHintText(text: "Profile Page"),
           ],
         ),
       ),

@@ -32,8 +32,8 @@ class RecentlyAddedView extends StatelessWidget {
                 ),
               ),
               FormSeperatorBox(),
-              SizedBox(
-                height: 230.h,
+              AspectRatio(
+                aspectRatio: 1.55,
                 child: ListView.separated(
                   padding: EdgeInsets.symmetric(
                     horizontal: AppDefaults.kPageSidePadding.left,

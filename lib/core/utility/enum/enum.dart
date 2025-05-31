@@ -8,6 +8,8 @@ enum ApplicationType {
   const ApplicationType(this.typeName);
 }
 
+enum DeviceType { mobile, tablet }
+
 enum MessageState { received, sending, error }
 
 enum RoleEnum { merchant, customer }

@@ -1,4 +1,5 @@
 import 'package:moviehub/core/constant/app_defaults.dart';
+import 'package:moviehub/main.dart';
 import 'package:moviehub/widgets/error_dialog_widget.dart';
 import 'package:moviehub/widgets/form_seperator_box.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,10 @@ import 'package:toastification/toastification.dart';
 
 // import 'package:url_launcher/url_launcher.dart';
 import '../theme/app_colors.dart';
+
+bool get isMobile {
+  return AppDefaults.deviceType == DeviceType.mobile;
+}
 
 Future<dynamic> showBottomSheetCustom(BuildContext context, Widget widget, {String? title, bool? isDismiss, bool? dragEnable}) async {
   return await showModalBottomSheet(
@@ -104,7 +109,19 @@ Future<dynamic> showAlertDialog(BuildContext context, String title, String conte
 }
 
 void asyncCallHelperWithLoadingBar(BuildContext context, {required Future<dynamic> Function() processCall, required Function onSuccess, Function(Object)? onError}) async {
-  ProgressDialog pr = ProgressDialog(context);
+  ProgressDialog pr = ProgressDialog(
+    context,
+    loaderSize: 60.sp,
+  );
+  pr.style(
+    progressWidget: Padding(
+      padding: EdgeInsets.all(14.sp),
+      child: CircularProgressIndicator(
+        strokeWidth: 2.sp,
+      ),
+    ),
+    messageTextStyle: TextStyle(color: Colors.black, fontSize: 18.sp),
+  );
 
   await pr.show();
   try {
