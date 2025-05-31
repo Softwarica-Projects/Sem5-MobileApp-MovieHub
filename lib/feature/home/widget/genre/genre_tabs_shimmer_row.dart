@@ -9,13 +9,13 @@ class GenreTabsShimmerRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: AppDefaults.kPageSidePadding,
+      padding: EdgeInsets.only(left: AppDefaults.kPageSidePadding.left),
       child: SizedBox(
         height: 30.h,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemCount: 6, // Show 6 shimmer tabs
-          separatorBuilder: (_, __) => const SizedBox(width: 12),
+          separatorBuilder: (_, __) => SizedBox(width: 12.w),
           itemBuilder: (context, index) => const GenreTabShimmer(),
         ),
       ),
