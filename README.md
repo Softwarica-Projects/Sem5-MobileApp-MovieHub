@@ -1,16 +1,23 @@
-# moviehub
+# 🎬 Movie Hub
+## Rishan Shrestha - 34-B
 
-A new Flutter project.
+**Movie Hub** is a mobile application built with **Flutter** that allows users to explore, rate, and manage their favorite movies. The app offers a curated collection of movies, including:
 
-## Getting Started
+- 📃 **Movie List**: Browse a wide range of movies.
+- ⭐ **Favourites**: Save movies to your personal favourites list.
+- 🎯 **Rate Movies**: Share your opinion by rating movies.
+- 🔥 **Trending Movies**: Discover what's popular in the world of cinema.
+- 🆕 **Recently Added Movies**: Stay up-to-date with the latest releases.
+- 🎥 **Featured Movies**: Explore movies that stand out.
 
-This project is a starting point for a Flutter application.
+## 🚀 Tech Stack
 
-A few resources to get you started if this is your first Flutter project:
+- **Flutter**: The primary framework for building the application.
+- **Dart**: The programming language used for Flutter.
+- **State Management**: BLOC
+- **Service Location**: getIt
+- **Font**: Aeonik
+- **Clean Architecture**
+- **Repository Pattern**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Movie Hub** combines sleek design and powerful features to enhance your movie-watching experience.

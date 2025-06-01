@@ -12,7 +12,6 @@ class MovieService {
     var tt = [...movieData];
     tt.shuffle();
     return tt.take(5).toList();
-    return [];
   }
 
   Future<List<MovieModel>> getRecentlyAdded() async {
@@ -20,7 +19,6 @@ class MovieService {
     var tt = [...movieData];
     tt.shuffle();
     return tt.take(5).toList();
-    return [];
   }
 
   Future<List<MovieModel>> getFeatured() async {

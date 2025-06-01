@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/core/helper/ui_helpers.dart';
 import 'package:moviehub/core/routes/routes.dart';
-import 'package:moviehub/core/theme/app_colors.dart';
 import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/home/widget/genre/genre_tabs_shimmer_row.dart';
 import 'package:moviehub/feature/home/widget/genre/tab_genre_widget.dart';
@@ -43,11 +42,7 @@ class GenreView extends StatelessWidget {
                       },
                       child: Text(
                         "See All",
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.primary,
-                        ),
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                     ),
                   ],

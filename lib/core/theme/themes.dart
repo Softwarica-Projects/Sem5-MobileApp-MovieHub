@@ -1,8 +1,7 @@
-import 'package:moviehub/core/constant/app_defaults.dart';
-import 'package:moviehub/core/helper/ui_helpers.dart';
-import 'package:moviehub/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:moviehub/core/constant/app_defaults.dart';
+import 'package:moviehub/core/theme/app_colors.dart';
 
 class Themes {
   //Default Icon Size
@@ -71,9 +70,9 @@ class Themes {
             color: Colors.white,
           ),
           headlineSmall: TextStyle(
-            fontSize: 13.sp,
-            color: AppColors.headingSmallColor,
-            fontWeight: FontWeight.w500,
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w400,
+            color: AppColors.primary,
             fontFamily: AppDefaults.fontFamily,
           ),
           headlineMedium: TextStyle(
