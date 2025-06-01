@@ -2,9 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-
 import 'package:moviehub/core/constant/app_defaults.dart';
-import 'package:moviehub/core/theme/app_colors.dart';
 
 class BottomBar extends StatelessWidget {
   final int index;

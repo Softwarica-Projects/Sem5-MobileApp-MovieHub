@@ -1,8 +1,7 @@
-import 'package:moviehub/core/constant/app_defaults.dart';
-import 'package:moviehub/core/helper/ui_helpers.dart';
-import 'package:moviehub/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:moviehub/core/constant/app_defaults.dart';
+import 'package:moviehub/core/theme/app_colors.dart';
 
 class Themes {
   //Default Icon Size
