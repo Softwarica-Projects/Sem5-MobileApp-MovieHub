@@ -65,10 +65,19 @@ _overlaySupprt(String message, ToastificationType type) {
       title: Text(
         message,
         maxLines: 3,
+        style: Theme.of(navigatorKey.currentContext!).textTheme.headlineSmall,
       ),
       style: ToastificationStyle.fillColored,
       showIcon: false,
       type: type,
+      closeButton: ToastCloseButton(
+        showType: CloseButtonShowType.always,
+        buttonBuilder: (context, onClose) => Icon(
+          Icons.close,
+          color: Colors.white,
+          size: 14.sp,
+        ),
+      ),
       autoCloseDuration: const Duration(seconds: 3),
       closeOnClick: true,
       alignment: Alignment.bottomCenter);

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:moviehub/feature/home/view/home_view.dart';
 import 'package:moviehub/feature/home/widget/bottom_bar.dart';
 import 'package:moviehub/widgets/center_hint_text.dart';
@@ -13,7 +12,7 @@ class DashboadView extends StatefulWidget {
 
 class _DashboadViewState extends State<DashboadView> with SingleTickerProviderStateMixin {
   late final TabController _tabBarController;
-  ValueNotifier<int> _tabBarIndex = ValueNotifier(0);
+  final ValueNotifier<int> _tabBarIndex = ValueNotifier(0);
   @override
   void initState() {
     super.initState();

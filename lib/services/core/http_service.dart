@@ -3,13 +3,10 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:moviehub/core/constant/api_url.dart';
-import 'package:moviehub/core/helper/ui_helpers.dart';
-import 'package:moviehub/core/routes/routes.dart';
-import 'package:moviehub/core/utility/exceptions/exception.dart';
 import 'package:moviehub/core/utility/extension.dart';
 import 'package:moviehub/services/core/preference_service.dart';
-import 'package:flutter/material.dart';
 
 class HttpService {
   final PreferenceService preferenceService;
