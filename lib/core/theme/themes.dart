@@ -71,9 +71,9 @@ class Themes {
             color: Colors.white,
           ),
           headlineSmall: TextStyle(
-            fontSize: 13.sp,
-            color: AppColors.headingSmallColor,
-            fontWeight: FontWeight.w500,
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w400,
+            color: AppColors.primary,
             fontFamily: AppDefaults.fontFamily,
           ),
           headlineMedium: TextStyle(

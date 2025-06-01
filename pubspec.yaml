@@ -98,7 +98,9 @@ flutter:
           weight: 500
         - asset: assets/fonts/Aeonik-Regular.otf
           weight: 400
-        - asset: assets/fonts/Aeonik-Thin.otf
+        - asset: assets/fonts/Aeonik-Light.otf
           weight: 300
-        - asset: assets/fonts/Aeonik-Air.otf
+        - asset: assets/fonts/Aeonik-Thin.otf
           weight: 200
+        - asset: assets/fonts/Aeonik-Air.otf
+          weight: 100

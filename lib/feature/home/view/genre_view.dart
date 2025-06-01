@@ -43,11 +43,7 @@ class GenreView extends StatelessWidget {
                       },
                       child: Text(
                         "See All",
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.primary,
-                        ),
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                     ),
                   ],
