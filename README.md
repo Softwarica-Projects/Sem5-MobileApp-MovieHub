@@ -1,4 +1,5 @@
 # 🎬 Movie Hub
+## Rishan Shrestha - 34-B
 
 **Movie Hub** is a mobile application built with **Flutter** that allows users to explore, rate, and manage their favorite movies. The app offers a curated collection of movies, including:
 
