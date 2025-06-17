@@ -15,7 +15,7 @@
 - **Flutter**: The primary framework for building the application.
 - **Dart**: The programming language used for Flutter.
 - **State Management**: BLOC
-- **Service Location**: getIt
+- **Service Locator**: getIt
 - **Font**: Aeonik
 - **Clean Architecture**
 - **Repository Pattern**

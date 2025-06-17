@@ -1,5 +1,25 @@
 class NoInternetException implements Exception {}
 
+class InvalidCredentialsException implements Exception {
+  final String? message;
+  InvalidCredentialsException(this.message);
+
+  @override
+  String toString() {
+    return '$message';
+  }
+}
+
+class AlreadyExistsException implements Exception {
+  final String? message;
+  AlreadyExistsException(this.message);
+
+  @override
+  String toString() {
+    return '$message';
+  }
+}
+
 class LocationServiceDisabled implements Exception {
   final String? message;
   LocationServiceDisabled(this.message);

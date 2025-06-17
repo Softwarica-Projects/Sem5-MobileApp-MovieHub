@@ -1,7 +1,7 @@
 import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/main.dart';
-import 'package:moviehub/widgets/error_dialog_widget.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/error_dialog_widget.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:progress_dialog/progress_dialog.dart';
@@ -65,7 +65,7 @@ _overlaySupprt(String message, ToastificationType type) {
       title: Text(
         message,
         maxLines: 3,
-        style: Theme.of(navigatorKey.currentContext!).textTheme.headlineSmall,
+        style: Theme.of(navigatorKey.currentContext!).textTheme.headlineSmall?.copyWith(color: Colors.white),
       ),
       style: ToastificationStyle.fillColored,
       showIcon: false,
