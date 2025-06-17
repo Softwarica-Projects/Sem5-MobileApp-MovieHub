@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moviehub/feature/home/view/home_view.dart';
 import 'package:moviehub/feature/home/widget/bottom_bar.dart';
-import 'package:moviehub/widgets/center_hint_text.dart';
+import 'package:moviehub/shared/widgets/center_hint_text.dart';
 
 class DashboadView extends StatefulWidget {
   const DashboadView({super.key});
