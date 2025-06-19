@@ -1,6 +1,8 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:moviehub/feature/auth/data/data_source/local_datasource/auth_local_datasource.dart';
+import 'package:moviehub/feature/auth/data/data_source/remote_datasource/auth_remote_datasource.dart';
 import 'package:moviehub/feature/auth/data/repository/local_repository/auth_local_repository.dart';
+import 'package:moviehub/feature/auth/data/repository/remote_repository/auth_remote_repository.dart';
 import 'package:moviehub/feature/auth/domain/repository/auth_repository.dart';
 import 'package:moviehub/feature/auth/domain/use_case/login_usecase.dart';
 import 'package:moviehub/feature/auth/domain/use_case/register_usecase.dart';
@@ -46,6 +48,9 @@ _dataSource() {
   locator.registerSingleton<AuthLocalDatasource>(
     AuthLocalDatasource(Hive),
   );
+  locator.registerSingleton<AuthRemoteDatasource>(
+    AuthRemoteDatasource(locator<HttpService>()),
+  );
 }
 
 _services() {
@@ -59,6 +64,9 @@ _repository() {
   locator.registerFactory<IAuthRepository>(
     () => AuthLocalRepository(locator<AuthLocalDatasource>()),
   );
+  // locator.registerFactory<IAuthRepository>(
+  //   () => AuthRemoteRepository(locator<AuthRemoteDatasource>()),
+  // );
 }
 
 _useCase() {
