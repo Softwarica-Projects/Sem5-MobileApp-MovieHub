@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/core/helper/ui_helpers.dart';
+import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/home/view/featured_view.dart';
 import 'package:moviehub/feature/home/view/genre_view.dart';
 import 'package:moviehub/feature/home/view/pouplar_view.dart';
 import 'package:moviehub/feature/home/view/recently_added_view.dart';
+import 'package:moviehub/services/core/preference_service.dart';
 import 'package:moviehub/shared/widgets/circular_image_widget.dart';
 import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 
@@ -35,7 +37,7 @@ class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin 
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Hello, John",
+                  "Hello, ${locator<PreferenceService>().username}",
                   style: TextStyle(
                     fontSize: 16.sp,
                   ),

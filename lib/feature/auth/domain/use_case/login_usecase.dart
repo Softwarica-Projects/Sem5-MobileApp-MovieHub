@@ -14,7 +14,8 @@ class LoginUsecase implements UsecaseWithParams<void, LoginModel> {
   Future<Either<Exception, UserModel>> call(LoginModel params) async {
     try {
       var user = await authRepository.loginUser(params);
-      preferenceService.accessToken = "data['token']";
+      preferenceService.username = user.name;
+      // preferenceService.accessToken = "data['token']";
       return Right(user);
     } on Exception catch (e) {
       return Future.value(Left(e));
