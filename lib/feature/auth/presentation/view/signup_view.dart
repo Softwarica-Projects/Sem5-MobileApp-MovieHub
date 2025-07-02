@@ -5,9 +5,8 @@ import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/core/helper/ui_helpers.dart';
 import 'package:moviehub/core/utility/validator.dart';
 import 'package:moviehub/dependency_inject.dart';
-import 'package:moviehub/feature/auth/domain/model/signup_model.dart';
+import 'package:moviehub/feature/auth/domain/entity/signup_entity.dart';
 import 'package:moviehub/feature/auth/presentation/view_model/signup/signup_view_model.dart';
-import 'package:moviehub/services/auth/auth_service.dart';
 import 'package:moviehub/shared/widgets/custom_ink_well.dart';
 import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 import 'package:moviehub/shared/widgets/form_title_widget.dart';
@@ -126,7 +125,7 @@ class _SignupViewState extends State<SignupView> {
                             return;
                           }
                           BlocProvider.of<SignupViewModel>(context).add(
-                            SignupRequested(SignupModel(
+                            SignupRequested(SignupEntity(
                               email: emailController.text,
                               name: nameController.text,
                               password: passwordController.text,

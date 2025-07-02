@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moviehub/feature/auth/domain/model/login_model.dart';
+import 'package:moviehub/feature/auth/domain/entity/login_entity.dart';
 import 'package:moviehub/feature/auth/domain/use_case/login_usecase.dart';
 
 part 'login_event.dart';

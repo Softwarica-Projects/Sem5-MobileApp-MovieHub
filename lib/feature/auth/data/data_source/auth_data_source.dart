@@ -1,8 +1,8 @@
-import 'package:moviehub/feature/auth/domain/model/login_model.dart';
-import 'package:moviehub/feature/auth/domain/model/signup_model.dart';
-import 'package:moviehub/feature/auth/domain/model/user_model.dart';
+import 'package:moviehub/feature/auth/domain/entity/auth_response_entity.dart';
+import 'package:moviehub/feature/auth/domain/entity/login_entity.dart';
+import 'package:moviehub/feature/auth/domain/entity/signup_entity.dart';
 
 abstract interface class IAuthDataSource {
-  Future<UserModel> loginUser(LoginModel data);
-  Future<void> registerUser(SignupModel data);
+  Future<AuthResponseEntity> loginUser(LoginEntity data);
+  Future<void> registerUser(SignupEntity data);
 }
