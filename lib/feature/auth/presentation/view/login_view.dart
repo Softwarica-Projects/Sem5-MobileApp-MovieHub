@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
@@ -5,15 +6,12 @@ import 'package:moviehub/core/helper/ui_helpers.dart';
 import 'package:moviehub/core/routes/routes.dart';
 import 'package:moviehub/core/utility/validator.dart';
 import 'package:moviehub/dependency_inject.dart';
-import 'package:moviehub/feature/auth/domain/model/login_model.dart';
+import 'package:moviehub/feature/auth/domain/entity/login_entity.dart';
 import 'package:moviehub/feature/auth/presentation/view_model/login/login_view_model.dart';
-import 'package:moviehub/services/auth/auth_service.dart';
-import 'package:moviehub/services/core/preference_service.dart';
 import 'package:moviehub/shared/widgets/custom_ink_well.dart';
 import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 import 'package:moviehub/shared/widgets/form_title_widget.dart';
 import 'package:moviehub/shared/widgets/visibility_widget.dart';
-import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 class LoginView extends StatefulWidget {
@@ -124,7 +122,7 @@ class _LoginViewState extends State<LoginView> {
                           }
                           BlocProvider.of<LoginViewModel>(context).add(
                             LoginRequested(
-                              LoginModel(
+                              LoginEntity(
                                 email: emailController.text,
                                 password: passwordController.text,
                               ),

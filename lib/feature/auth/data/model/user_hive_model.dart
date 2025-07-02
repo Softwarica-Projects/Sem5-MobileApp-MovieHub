@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:moviehub/core/constant/hive_table_constant.dart';
-import 'package:moviehub/feature/auth/domain/model/login_model.dart';
-import 'package:moviehub/feature/auth/domain/model/signup_model.dart';
-import 'package:moviehub/feature/auth/domain/model/user_model.dart';
+import 'package:moviehub/feature/auth/domain/entity/login_entity.dart';
+import 'package:moviehub/feature/auth/domain/entity/signup_entity.dart';
+import 'package:moviehub/feature/auth/domain/entity/user_entity.dart';
 import 'package:uuid/uuid.dart';
 
 part 'user_hive_model.g.dart';
@@ -19,7 +19,7 @@ class UserHiveModel extends Equatable {
   @HiveField(3)
   final String password;
 
-  factory UserHiveModel.fromSignupModel(SignupModel model) {
+  factory UserHiveModel.fromSignupModel(SignupEntity model) {
     return UserHiveModel(
       model.name,
       model.email,
@@ -28,8 +28,8 @@ class UserHiveModel extends Equatable {
   }
   UserHiveModel(this.name, this.email, this.password) : id = Uuid().v4();
 //
-  UserModel toDomainModel() {
-    return UserModel(
+  UserEntity toDomainModel() {
+    return UserEntity(
       id: id,
       name: name,
       email: email,

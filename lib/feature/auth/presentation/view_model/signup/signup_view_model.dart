@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moviehub/feature/auth/domain/model/signup_model.dart';
+import 'package:moviehub/feature/auth/domain/entity/signup_entity.dart';
 import 'package:moviehub/feature/auth/domain/use_case/register_usecase.dart';
 
 part 'signup_event.dart';
