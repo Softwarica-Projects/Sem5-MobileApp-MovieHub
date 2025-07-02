@@ -1,4 +1,5 @@
 import 'package:moviehub/demodata.dart';
+import 'package:moviehub/feature/genre/domain/entity/genre_entity.dart';
 import 'package:moviehub/services/core/http_service.dart';
 import 'package:moviehub/shared/model/genre_model.dart';
 
@@ -7,7 +8,7 @@ class GeneralService {
 
   GeneralService(this._httpService);
 
-  Future<List<GenreModel>> getGenres() async {
+  Future<List<GenreEntity>> getGenres() async {
     await demoDelay();
     return genreList;
   }

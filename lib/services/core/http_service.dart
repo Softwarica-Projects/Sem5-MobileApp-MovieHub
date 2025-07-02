@@ -366,8 +366,11 @@ class HttpService {
           if (error.response!.statusCode == 401) {
             throw ("Session Expired");
           } else {
-            if (error.response?.data is! String && error.response?.data['error'] != null) throw error.response?.data['error'];
-            throw error.response!.data;
+            if (error.response?.data is String) {
+              throw error.response!.data;
+            }
+            var message = error.response?.data['error'] ?? error.response?.data['message'];
+            throw message ?? error.response?.data.toString();
           }
         default:
           throw (error.message ?? '');
