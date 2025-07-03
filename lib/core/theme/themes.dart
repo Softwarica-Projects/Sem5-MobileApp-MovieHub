@@ -168,7 +168,7 @@ class Themes {
               )),
           minimumSize: WidgetStateProperty.resolveWith<Size>(
             (states) => Size(
-              double.maxFinite,
+              AppDefaults.deviceType == DeviceType.mobile ? double.maxFinite : 200.w,
               AppDefaults.buttonHeight,
             ),
           ),
@@ -190,7 +190,7 @@ class Themes {
           backgroundColor: WidgetStateProperty.resolveWith<Color>((states) => AppColors.primary),
           minimumSize: WidgetStateProperty.resolveWith<Size>(
             (states) => Size(
-              double.maxFinite,
+              AppDefaults.deviceType == DeviceType.mobile ? double.maxFinite : 180.w,
               AppDefaults.buttonHeight,
             ),
           ),
@@ -205,7 +205,7 @@ class Themes {
               )),
           backgroundColor: WidgetStateProperty.resolveWith<Color>((states) => AppColors.primary),
           minimumSize: WidgetStateProperty.resolveWith<Size>(
-            (states) => Size(double.maxFinite, AppDefaults.buttonHeight),
+            (states) => Size(AppDefaults.deviceType == DeviceType.mobile ? double.maxFinite : 200.w, AppDefaults.buttonHeight),
           ),
         ),
       );
