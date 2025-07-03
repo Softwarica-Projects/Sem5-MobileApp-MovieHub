@@ -6,7 +6,7 @@
 - 📃 **Movie List**: Browse a wide range of movies.
 - ⭐ **Favourites**: Save movies to your personal favourites list.
 - 🎯 **Rate Movies**: Share your opinion by rating movies.
-- 🔥 **Trending Movies**: Discover what's popular in the world of cinema.
+- 🔥 **Popular Movies**: Discover what's popular in the world of cinema.
 - 🆕 **Recently Added Movies**: Stay up-to-date with the latest releases.
 - 🎥 **Featured Movies**: Explore movies that stand out.
 
@@ -58,4 +58,14 @@ A signup feature has been added, allowing new users to register by providing the
 ### Hive Database Integration
 Both login and signup functionalities utilize the Hive database for local data storage. Hive provides a lightweight, fast, and reliable solution for managing user data within the app, supporting offline access and quick authentication.
 
+## Sprint 4 Features
 
+### 1. API Integration for Authentication
+Login and register functionality are integrating with backend APIs. The authentication system now supports credential validation and user registration through secure API endpoints.
+
+### 2. Dashboard API Implementation
+Implemented comprehensive API integration for all dashboard features:
+- **Featured Movies**: Fetching of movie which are marked as featured
+- **Popular Movies**: Movies with high ratings
+- **Recently Added Movies**: List of movies that are added recently
+- **Genres**: Genre list with updated categories
