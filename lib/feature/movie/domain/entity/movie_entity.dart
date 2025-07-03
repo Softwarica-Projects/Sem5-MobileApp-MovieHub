@@ -2,6 +2,8 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:moviehub/core/constant/api_url.dart';
+import 'package:moviehub/core/utility/environment.dart';
 
 import 'package:moviehub/shared/model/cast_model.dart';
 import 'package:moviehub/shared/model/review_model.dart';
@@ -59,7 +61,10 @@ class MovieEntity {
 
   factory MovieEntity.fromMap(Map<String, dynamic> map) {
     try {
-      print(map);
+      var image = map['coverImage'] as String? ?? "";
+      if (image.isNotEmpty && !image.startsWith('http')) {
+        image = "${getEnvironment.domainUrl}${image}";
+      }
       return MovieEntity(
         id: map['_id'] as String,
         genreId: map['genre'] ?? "",
@@ -69,7 +74,7 @@ class MovieEntity {
         runtime: map['runtime'] as int,
         releaseDate: map['releaseDate'] as String,
         averageRating: double.tryParse(map['averageRating']?.toString() ?? "") ?? 0.0,
-        coverImage: map['coverImage'] ?? "",
+        coverImage: image,
         title: map['title'] as String,
         movieType: map['movieType'] as String,
         description: map['description'] != null ? map['description'] as String : null,
