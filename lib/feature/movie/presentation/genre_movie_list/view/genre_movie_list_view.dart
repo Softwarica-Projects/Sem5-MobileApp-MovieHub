@@ -5,7 +5,7 @@ import 'package:moviehub/core/bloc/view/bloc_provider_view.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/movie/presentation/genre_movie_list/view_model/genre_movie_list_view_model.dart';
-import 'package:moviehub/feature/movie/presentation/genre_movie_list/widget/search_movie_widget.dart';
+import 'package:moviehub/feature/search/presentation/widget/search_movie_widget.dart';
 import 'package:moviehub/shared/widgets/center_hint_text.dart';
 import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 

@@ -3,6 +3,7 @@ import 'package:moviehub/core/routes/routes.dart';
 import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/home/presentation/home/view/home_view.dart';
 import 'package:moviehub/feature/home/presentation/widget/bottom_bar.dart';
+import 'package:moviehub/feature/search/presentation/view/search_view.dart';
 import 'package:moviehub/services/core/preference_service.dart';
 import 'package:moviehub/shared/widgets/center_hint_text.dart';
 
@@ -43,7 +44,7 @@ class _DashboadViewState extends State<DashboadView> with SingleTickerProviderSt
           controller: _tabBarController,
           children: [
             HomeView(),
-            CenterHintText(text: "Search Page"),
+            SearchView(),
             CenterHintText(text: "Wishlist Page"),
             Center(
               child: TextButton(
