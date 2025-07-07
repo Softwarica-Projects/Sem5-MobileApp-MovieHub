@@ -30,4 +30,10 @@ class MovieRemoteRepository implements IMovieRepository {
     final movies = await _dataSource.searchMovie(query, genreId);
     return movies;
   }
+
+  @override
+  Future<MovieEntity> getById(String id) async {
+    final movie = await _dataSource.getById(id);
+    return movie;
+  }
 }

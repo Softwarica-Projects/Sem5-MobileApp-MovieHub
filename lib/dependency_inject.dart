@@ -21,7 +21,9 @@ import 'package:moviehub/feature/movie/data/data_source/remote_datasource/movie_
 import 'package:moviehub/feature/movie/data/repository/remote_repository/movie_remote_repository.dart';
 import 'package:moviehub/feature/movie/domain/repository/movie_repository.dart';
 import 'package:moviehub/feature/movie/domain/use_case/get_genre_movie_list.dart';
+import 'package:moviehub/feature/movie/domain/use_case/get_movie_detail.dart';
 import 'package:moviehub/feature/movie/presentation/genre_movie_list/view_model/genre_movie_list_view_model.dart';
+import 'package:moviehub/feature/movie/presentation/movie_detail/view_model/movie_detail/movie_detail_view_model.dart';
 import 'package:moviehub/feature/search/domain/use_case/saerch_movie_use_case.dart';
 import 'package:moviehub/feature/search/presentation/view_model/search_view_model.dart';
 import 'package:moviehub/services/auth/auth_service.dart';
@@ -133,6 +135,9 @@ _useCase() {
   locator.registerFactory(() => SearchMovieUseCase(
         locator<IMovieRepository>(),
       ));
+  locator.registerFactory(() => GetMovieDetailUseCase(
+        locator<IMovieRepository>(),
+      ));
 }
 
 _viewModel() {
@@ -146,4 +151,5 @@ _viewModel() {
   locator.registerFactory(() => GenreListViewModel(locator<GetGenresUseCase>()));
   locator.registerFactoryParam<GenreMovieListViewModel, String?, void>((genreId, _) => GenreMovieListViewModel(locator<GetGenreMovieListUseCase>(), genreId));
   locator.registerFactory(() => SearchViewModel(locator<SearchMovieUseCase>()));
+  locator.registerFactoryParam<MovieDetailViewModel, String, void>((movieId, _) => MovieDetailViewModel(locator<GetMovieDetailUseCase>(), movieId));
 }

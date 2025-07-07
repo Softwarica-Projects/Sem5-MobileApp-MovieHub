@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class WishlistIcon extends StatelessWidget {
-  final int movieId;
+  final String movieId;
   const WishlistIcon({
     Key? key,
     required this.movieId,
@@ -10,7 +10,7 @@ class WishlistIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isInWishlist = movieId % 2 == 0; // Replace with your logic to check if the movie is in the wishlist
+    bool isInWishlist = false;
     return Icon(
       Icons.favorite,
       color: isInWishlist ? Colors.red : Colors.grey,

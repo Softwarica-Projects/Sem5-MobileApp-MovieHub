@@ -5,4 +5,5 @@ abstract interface class IMovieDataSource {
   Future<List<MovieEntity>> getPopularMovies();
   Future<List<MovieEntity>> getRecentlyAddedMovies();
   Future<List<MovieEntity>> searchMovie(String query, String? genreId);
+  Future<MovieEntity> getById(String id);
 }

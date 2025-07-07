@@ -10,9 +10,9 @@ import 'package:moviehub/shared/widgets/image_widget.dart';
 class GridMovieWidget extends StatelessWidget {
   final MovieEntity data;
   const GridMovieWidget({
-    Key? key,
+    super.key,
     required this.data,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
