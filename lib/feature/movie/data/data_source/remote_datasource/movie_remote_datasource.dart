@@ -31,4 +31,16 @@ class MovieRemoteDataSource implements IMovieDataSource {
     );
     return (response as List<dynamic>).map((x) => MovieEntity.fromMap(x)).toList();
   }
+
+  @override
+  Future<List<MovieEntity>> searchMovie(String query, String? genreId) async {
+    var response = await _httpService.getData(
+      ApiUrl.searchMovie,
+      data: {
+        "query": query,
+        "genreId": genreId,
+      },
+    );
+    return (response as List<dynamic>).map((x) => MovieEntity.fromMap(x)).toList();
+  }
 }

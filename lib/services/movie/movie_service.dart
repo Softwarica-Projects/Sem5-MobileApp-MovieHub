@@ -28,4 +28,16 @@ class MovieService {
     tt.shuffle();
     return tt.take(5).toList();
   }
+
+  Future<List<MovieEntity>> searchMovie(String query, int? genreId) async {
+    await demoDelay();
+    return movieData
+        .where((element) =>
+            (genreId == null ? true : element.genreId == genreId) &&
+            (element.title.toLowerCase().contains(query.toLowerCase()) ||
+                (element.description ?? "").toLowerCase().contains(
+                      query.toLowerCase(),
+                    )))
+        .toList();
+  }
 }

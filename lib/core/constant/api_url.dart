@@ -14,6 +14,7 @@ class ApiUrl {
   static String featuredMovies = "movies/featured-movies";
   static String recentlyAddedMovies = "movies/recent";
   static String popularMovies = "movies/top-viewed";
+  static String searchMovie = "movies/search";
 
   ///[Genre]
   static String genreList = "genres";

@@ -1,7 +1,4 @@
 import 'package:get_it/get_it.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:moviehub/feature/auth/data/data_source/auth_data_source.dart';
-import 'package:moviehub/feature/auth/data/data_source/local_datasource/auth_local_datasource.dart';
 import 'package:moviehub/feature/auth/data/data_source/remote_datasource/auth_remote_datasource.dart';
 import 'package:moviehub/feature/auth/data/repository/remote_repository/auth_remote_repository.dart';
 import 'package:moviehub/feature/auth/domain/repository/auth_repository.dart';
@@ -9,7 +6,6 @@ import 'package:moviehub/feature/auth/domain/use_case/login_usecase.dart';
 import 'package:moviehub/feature/auth/domain/use_case/register_usecase.dart';
 import 'package:moviehub/feature/auth/presentation/view_model/login/login_view_model.dart';
 import 'package:moviehub/feature/auth/presentation/view_model/signup/signup_view_model.dart';
-import 'package:moviehub/feature/genre/data/data_source/genre_data_source.dart';
 import 'package:moviehub/feature/genre/data/data_source/remote_datasource/genre_remote_datasource.dart';
 import 'package:moviehub/feature/genre/data/repository/remote_repository/genre_remote_repository.dart';
 import 'package:moviehub/feature/genre/domain/repository/genre_repository.dart';
@@ -21,10 +17,11 @@ import 'package:moviehub/feature/home/presentation/featured/view_model/featured_
 import 'package:moviehub/feature/home/presentation/genre/view_model/genre_list_view_model.dart';
 import 'package:moviehub/feature/home/presentation/popular/view_model/popular_list_view_model.dart';
 import 'package:moviehub/feature/home/presentation/recently_added/view_model/recently_added_view_model.dart';
-import 'package:moviehub/feature/movie/data/data_source/movie_data_source.dart';
 import 'package:moviehub/feature/movie/data/data_source/remote_datasource/movie_remote_datasource.dart';
 import 'package:moviehub/feature/movie/data/repository/remote_repository/movie_remote_repository.dart';
 import 'package:moviehub/feature/movie/domain/repository/movie_repository.dart';
+import 'package:moviehub/feature/movie/domain/use_case/get_genre_movie_list.dart';
+import 'package:moviehub/feature/movie/presentation/genre_movie_list/view_model/genre_movie_list_view_model.dart';
 import 'package:moviehub/services/auth/auth_service.dart';
 import 'package:moviehub/services/core/http_service.dart';
 import 'package:moviehub/services/core/preference_service.dart';
@@ -128,6 +125,9 @@ _useCase() {
   locator.registerFactory(() => GetGenresUseCase(
         locator<IGenreRepository>(),
       ));
+  locator.registerFactory(() => GetGenreMovieListUseCase(
+        locator<IMovieRepository>(),
+      ));
 }
 
 _viewModel() {
@@ -139,4 +139,5 @@ _viewModel() {
   locator.registerFactory(() => PopularListViewModel(locator<GetPopularMoviesUseCase>()));
   locator.registerFactory(() => RecentlyAddedViewModel(locator<GetRecentlyAddedMoviesUseCase>()));
   locator.registerFactory(() => GenreListViewModel(locator<GetGenresUseCase>()));
+  locator.registerFactoryParam<GenreMovieListViewModel, String?, void>((genreId, _) => GenreMovieListViewModel(locator<GetGenreMovieListUseCase>(), genreId));
 }

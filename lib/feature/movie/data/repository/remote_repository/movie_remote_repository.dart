@@ -1,4 +1,3 @@
-import 'package:moviehub/feature/movie/data/data_source/movie_data_source.dart';
 import 'package:moviehub/feature/movie/data/data_source/remote_datasource/movie_remote_datasource.dart';
 import 'package:moviehub/feature/movie/domain/entity/movie_entity.dart';
 import 'package:moviehub/feature/movie/domain/repository/movie_repository.dart';
@@ -23,6 +22,12 @@ class MovieRemoteRepository implements IMovieRepository {
   @override
   Future<List<MovieEntity>> getRecentlyAddedMovies() async {
     final movies = await _dataSource.getRecentlyAddedMovies();
+    return movies;
+  }
+
+  @override
+  Future<List<MovieEntity>> searchMovie(String query, String? genreId) async {
+    final movies = await _dataSource.searchMovie(query, genreId);
     return movies;
   }
 }
