@@ -13,17 +13,22 @@ import 'package:moviehub/feature/home/domain/use_case/get_featured_movies_usecas
 import 'package:moviehub/feature/home/domain/use_case/get_genres_usecase.dart';
 import 'package:moviehub/feature/home/domain/use_case/get_popular_movies_usecase.dart';
 import 'package:moviehub/feature/home/domain/use_case/get_recently_added_movies_usecase.dart';
+import 'package:moviehub/feature/home/domain/use_case/get_releasing_soon_movies_usecase.dart';
 import 'package:moviehub/feature/home/presentation/featured/view_model/featured_movies_view_model.dart';
 import 'package:moviehub/feature/home/presentation/genre/view_model/genre_list_view_model.dart';
 import 'package:moviehub/feature/home/presentation/popular/view_model/popular_list_view_model.dart';
 import 'package:moviehub/feature/home/presentation/recently_added/view_model/recently_added_view_model.dart';
+import 'package:moviehub/feature/home/presentation/releasing_soon/view_model/releasing_soon_view_model.dart';
 import 'package:moviehub/feature/movie/data/data_source/remote_datasource/movie_remote_datasource.dart';
 import 'package:moviehub/feature/movie/data/repository/remote_repository/movie_remote_repository.dart';
 import 'package:moviehub/feature/movie/domain/repository/movie_repository.dart';
-import 'package:moviehub/feature/movie/domain/use_case/get_genre_movie_list.dart';
-import 'package:moviehub/feature/movie/domain/use_case/get_movie_detail.dart';
+import 'package:moviehub/feature/movie/domain/use_case/get_genre_movie_list_use_case.dart';
+import 'package:moviehub/feature/movie/domain/use_case/get_movie_detail_use_case.dart';
+import 'package:moviehub/feature/movie/domain/use_case/mark_view_movie_use_case%20copy.dart';
+import 'package:moviehub/feature/movie/domain/use_case/rate_movie_use_case.dart';
 import 'package:moviehub/feature/movie/presentation/genre_movie_list/view_model/genre_movie_list_view_model.dart';
 import 'package:moviehub/feature/movie/presentation/movie_detail/view_model/movie_detail/movie_detail_view_model.dart';
+import 'package:moviehub/feature/movie/presentation/movie_detail/view_model/rating/rate_movie_view_model.dart';
 import 'package:moviehub/feature/search/domain/use_case/saerch_movie_use_case.dart';
 import 'package:moviehub/feature/search/presentation/view_model/search_view_model.dart';
 import 'package:moviehub/services/auth/auth_service.dart';
@@ -138,6 +143,15 @@ _useCase() {
   locator.registerFactory(() => GetMovieDetailUseCase(
         locator<IMovieRepository>(),
       ));
+  locator.registerFactory(() => RateMovieUseCase(
+        locator<IMovieRepository>(),
+      ));
+  locator.registerFactory(() => MarkViewMovieUseCase(
+        locator<IMovieRepository>(),
+      ));
+  locator.registerFactory(() => GetReleasingSoonMoviesUseCase(
+        locator<IMovieRepository>(),
+      ));
 }
 
 _viewModel() {
@@ -148,8 +162,10 @@ _viewModel() {
   locator.registerFactory(() => FeaturedMoviesViewModel(locator<GetFeaturedMoviesUseCase>()));
   locator.registerFactory(() => PopularListViewModel(locator<GetPopularMoviesUseCase>()));
   locator.registerFactory(() => RecentlyAddedViewModel(locator<GetRecentlyAddedMoviesUseCase>()));
+  locator.registerFactory(() => ReleasingSoonViewModel(locator<GetReleasingSoonMoviesUseCase>()));
   locator.registerFactory(() => GenreListViewModel(locator<GetGenresUseCase>()));
   locator.registerFactoryParam<GenreMovieListViewModel, String?, void>((genreId, _) => GenreMovieListViewModel(locator<GetGenreMovieListUseCase>(), genreId));
   locator.registerFactory(() => SearchViewModel(locator<SearchMovieUseCase>()));
-  locator.registerFactoryParam<MovieDetailViewModel, String, void>((movieId, _) => MovieDetailViewModel(locator<GetMovieDetailUseCase>(), movieId));
+  locator.registerFactoryParam<MovieDetailViewModel, String, void>((movieId, _) => MovieDetailViewModel(locator<GetMovieDetailUseCase>(), locator<MarkViewMovieUseCase>(), movieId));
+  locator.registerFactoryParam<RateMovieViewModel, String, void>((movieId, _) => RateMovieViewModel(locator<RateMovieUseCase>(), movieId));
 }

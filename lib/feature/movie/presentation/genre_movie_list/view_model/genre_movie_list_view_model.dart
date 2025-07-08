@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviehub/core/bloc/state/bloc_state.dart';
 import 'package:moviehub/feature/movie/domain/entity/movie_entity.dart';
-import 'package:moviehub/feature/movie/domain/use_case/get_genre_movie_list.dart';
+import 'package:moviehub/feature/movie/domain/use_case/get_genre_movie_list_use_case.dart';
 
 part 'genre_movie_list_event.dart';
 part 'genre_movie_list_state.dart';

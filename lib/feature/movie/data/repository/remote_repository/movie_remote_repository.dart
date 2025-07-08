@@ -1,5 +1,6 @@
 import 'package:moviehub/feature/movie/data/data_source/remote_datasource/movie_remote_datasource.dart';
 import 'package:moviehub/feature/movie/domain/entity/movie_entity.dart';
+import 'package:moviehub/feature/movie/domain/entity/rate_movie_entity.dart';
 import 'package:moviehub/feature/movie/domain/repository/movie_repository.dart';
 
 class MovieRemoteRepository implements IMovieRepository {
@@ -20,6 +21,12 @@ class MovieRemoteRepository implements IMovieRepository {
   }
 
   @override
+  Future<List<MovieEntity>> getReleasingSoonMovies() async {
+    final movies = await _dataSource.getReleasingSoonMovies();
+    return movies;
+  }
+
+  @override
   Future<List<MovieEntity>> getRecentlyAddedMovies() async {
     final movies = await _dataSource.getRecentlyAddedMovies();
     return movies;
@@ -35,5 +42,16 @@ class MovieRemoteRepository implements IMovieRepository {
   Future<MovieEntity> getById(String id) async {
     final movie = await _dataSource.getById(id);
     return movie;
+  }
+
+  @override
+  Future<String> rateMovie(RateMovieEntity data) async {
+    final response = await _dataSource.rateMovie(data);
+    return response;
+  }
+
+  @override
+  Future<void> markAsView(String id) async {
+    await _dataSource.markAsView(id);
   }
 }

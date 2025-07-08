@@ -1,6 +1,7 @@
 import 'package:moviehub/core/constant/api_url.dart';
 import 'package:moviehub/feature/movie/data/data_source/movie_data_source.dart';
 import 'package:moviehub/feature/movie/domain/entity/movie_entity.dart';
+import 'package:moviehub/feature/movie/domain/entity/rate_movie_entity.dart';
 import 'package:moviehub/services/core/http_service.dart';
 
 class MovieRemoteDataSource implements IMovieDataSource {
@@ -20,6 +21,14 @@ class MovieRemoteDataSource implements IMovieDataSource {
   Future<List<MovieEntity>> getPopularMovies() async {
     var response = await _httpService.getData(
       ApiUrl.popularMovies,
+    );
+    return (response as List<dynamic>).map((x) => MovieEntity.fromMap(x)).toList();
+  }
+
+  @override
+  Future<List<MovieEntity>> getReleasingSoonMovies() async {
+    var response = await _httpService.getData(
+      ApiUrl.releasingSoonMovies,
     );
     return (response as List<dynamic>).map((x) => MovieEntity.fromMap(x)).toList();
   }
@@ -50,5 +59,20 @@ class MovieRemoteDataSource implements IMovieDataSource {
       ApiUrl.movieDetail(id),
     );
     return MovieEntity.fromMap(response);
+  }
+
+  @override
+  Future<String> rateMovie(RateMovieEntity data) async {
+    var response = await _httpService.postDataJson(
+        ApiUrl.rateMovie(
+          data.id,
+        ),
+        data: data.toMap());
+    return response.toString();
+  }
+
+  @override
+  Future<void> markAsView(String id) async {
+    await _httpService.postDataJson(ApiUrl.markMovieAsView(id), data: {"id": id});
   }
 }

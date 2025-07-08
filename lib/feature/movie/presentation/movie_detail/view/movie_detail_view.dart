@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:moviehub/core/bloc/view/bloc_builder_view.dart';
@@ -10,6 +11,7 @@ import 'package:moviehub/core/theme/app_colors.dart';
 import 'package:moviehub/core/utility/utilities.dart';
 import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/movie/domain/entity/movie_entity.dart';
+import 'package:moviehub/feature/movie/presentation/movie_detail/view/rate_movie_view.dart';
 import 'package:moviehub/feature/movie/presentation/movie_detail/view_model/movie_detail/movie_detail_view_model.dart';
 import 'package:moviehub/feature/movie/presentation/movie_detail/widget/about_movie_widget.dart';
 import 'package:moviehub/feature/movie/presentation/movie_detail/widget/reviews_list_widget.dart';
@@ -39,7 +41,15 @@ class _MovieDetailViewState extends State<MovieDetailView> with TickerProviderSt
   }
 
   showRatingDialog(BuildContext context) {
-    // showBottomSheetCustom(context, RateMovieWidget(movieId: widget.id), title: "Rate this movie");
+    showBottomSheetCustom(
+        context,
+        RateMovieView(
+          movieId: widget.id,
+          onSuccess: () {
+            context.read<MovieDetailViewModel>().add(FetchMovieDetail());
+          },
+        ),
+        title: "Rate this movie");
   }
 
   @override
@@ -47,12 +57,15 @@ class _MovieDetailViewState extends State<MovieDetailView> with TickerProviderSt
     return BlocProviderView<MovieDetailViewModel>(
       objLocator: () => locator<MovieDetailViewModel>(param1: widget.id),
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showRatingDialog(context);
-          },
-          child: Icon(Icons.add),
-        ),
+        floatingActionButton: Builder(builder: (context) {
+          return FloatingActionButton(
+            onPressed: () {
+              // context.read<MovieDetailViewModel>().add(FetchMovieDetail());
+              showRatingDialog(context);
+            },
+            child: Icon(Icons.add),
+          );
+        }),
         body: BlocBuilderView<MovieDetailViewModel, MovieDetailState, MovieDetailLoaded>(
           child: (context, state) => Column(
             children: [

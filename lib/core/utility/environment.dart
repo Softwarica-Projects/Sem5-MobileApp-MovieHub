@@ -7,16 +7,16 @@ interface class AppEnvironment {
 interface class ProductionEnvironment extends AppEnvironment {
   ProductionEnvironment()
       : super(
-          "http://192.168.1.86:8081",
-          "http://192.168.1.86:8081/api/",
+          "http://192.168.1.76:8081",
+          "http://192.168.1.76:8081/api/",
         );
 }
 
 interface class DevelopmentEnvironment extends AppEnvironment {
   DevelopmentEnvironment()
       : super(
-          "http://192.168.1.86:8081/",
-          "http://192.168.1.86:8081/api/",
+          "http://192.168.1.76:8081/",
+          "http://192.168.1.76:8081/api/",
         );
 }
 

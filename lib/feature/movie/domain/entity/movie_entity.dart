@@ -67,7 +67,7 @@ class MovieEntity {
       }
       return MovieEntity(
         id: map['_id'] as String,
-        genreId: map['genre'] ?? "",
+        genreId: map['genre'] == null ? "" : (map['genre'] is String ? map['genre'] : map['genre']['name']),
         genre: map['genreName'] ?? "",
         movieLink: map['movieLink'] != null ? map['movieLink'] as String : null,
         trailerLink: map['trailerLink'] != null ? map['trailerLink'] as String : null,

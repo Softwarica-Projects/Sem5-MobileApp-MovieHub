@@ -5,7 +5,10 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:moviehub/core/constant/api_url.dart';
+import 'package:moviehub/core/routes/routes.dart';
 import 'package:moviehub/core/utility/extension.dart';
+import 'package:moviehub/dependency_inject.dart';
+import 'package:moviehub/main.dart';
 import 'package:moviehub/services/core/preference_service.dart';
 
 class HttpService {
@@ -41,16 +44,17 @@ class HttpService {
         debugPrint('--------------------------------');
         debugPrint((e.response?.data ?? e.message).toString());
         debugPrint('--------------------------------');
-        // if ((e.response?.statusCode == 401 || e.response?.statusCode == 403)) {
-        //   if (Routes.loginPage != Get.currentRoute) {
-        //     locator<PreferenceService>().clearSession();
-        //     Get.offAllNamed(Routes.loginPage);
-        //     displayToastFailure("Session Expired, Please Login");
-        //   }
-        //   handler.reject(e);
-        // } else {
-        //   handler.next(e);
-        // }
+        if ((e.response?.statusCode == 401 || e.response?.statusCode == 403)) {
+          if (Routes.loginPage != ModalRoute.of(navigatorKey.currentState!.context)?.settings.name) {
+            locator<PreferenceService>().clearSession();
+            Navigator.of(navigatorKey.currentState!.context).pushNamedAndRemoveUntil(Routes.loginPage, (route) => false);
+            // Get.offAllNamed(Routes.loginPage);
+            // displayToastFailure("Session Expired, Please Login");
+          }
+          handler.reject(e);
+        } else {
+          handler.next(e);
+        }
         handler.next(e);
       },
       onResponse: (response, handler) async {
