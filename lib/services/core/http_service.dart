@@ -52,8 +52,7 @@ class HttpService {
             // displayToastFailure("Session Expired, Please Login");
           }
           handler.reject(e);
-        } else {
-          handler.next(e);
+          return;
         }
         handler.next(e);
       },

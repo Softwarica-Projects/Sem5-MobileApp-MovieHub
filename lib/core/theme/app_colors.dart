@@ -40,6 +40,7 @@ class AppColors {
 
   static final kColorError = Colors.red[800]!;
   static const kColorBackground = Color(0xff1F1D2B);
+  static const favouriteIcon = Color(0xffFF69B4);
 
   static const kColorBackgroundSecondary = Color(0xffF9F9F9);
   static const kColorButtonPrimary = kPrimaryButton;

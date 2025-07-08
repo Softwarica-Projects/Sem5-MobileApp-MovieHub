@@ -15,10 +15,11 @@ import 'package:moviehub/feature/movie/presentation/movie_detail/view/rate_movie
 import 'package:moviehub/feature/movie/presentation/movie_detail/view_model/movie_detail/movie_detail_view_model.dart';
 import 'package:moviehub/feature/movie/presentation/movie_detail/widget/about_movie_widget.dart';
 import 'package:moviehub/feature/movie/presentation/movie_detail/widget/reviews_list_widget.dart';
+import 'package:moviehub/shared/widgets/custom_ink_well.dart';
 import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 import 'package:moviehub/shared/widgets/image_widget.dart';
 import 'package:moviehub/shared/widgets/label_widget.dart';
-import 'package:moviehub/shared/widgets/wishlist_icon.dart';
+import 'package:moviehub/feature/favourite/presentation/widget/wishlist_icon.dart';
 
 class MovieDetailView extends StatefulWidget {
   final String id;
@@ -66,34 +67,43 @@ class _MovieDetailViewState extends State<MovieDetailView> with TickerProviderSt
             child: Icon(Icons.add),
           );
         }),
-        body: BlocBuilderView<MovieDetailViewModel, MovieDetailState, MovieDetailLoaded>(
-          child: (context, state) => Column(
-            children: [
-              Stack(
-                fit: StackFit.loose,
+        body: Builder(builder: (context) {
+          return BlocListener<MovieDetailViewModel, MovieDetailState>(
+            listener: (context, state) {
+              if (state is ToggleFavSuccess) {
+                displayToastSuccess(state.message);
+              }
+            },
+            child: BlocBuilderView<MovieDetailViewModel, MovieDetailState, MovieDetailLoaded>(
+              child: (context, state) => Column(
                 children: [
-                  backgroundWidget(state.movie),
-                  Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Theme.of(context).scaffoldBackgroundColor.withOpacity(0.7),
-                          Theme.of(context).scaffoldBackgroundColor,
-                        ],
-                      ),
-                    ),
-                    height: backgroundIamgeHeight,
-                    width: double.maxFinite,
-                    child: headerWidget(state.movie),
-                  )
+                  Stack(
+                    fit: StackFit.loose,
+                    children: [
+                      backgroundWidget(state.movie),
+                      Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Theme.of(context).scaffoldBackgroundColor.withOpacity(0.7),
+                              Theme.of(context).scaffoldBackgroundColor,
+                            ],
+                          ),
+                        ),
+                        height: backgroundIamgeHeight,
+                        width: double.maxFinite,
+                        child: headerWidget(state.movie),
+                      )
+                    ],
+                  ),
+                  Expanded(child: bodyView(state.movie))
                 ],
               ),
-              Expanded(child: bodyView(state.movie))
-            ],
-          ),
-        ),
+            ),
+          );
+        }),
       ),
     );
   }
@@ -134,9 +144,17 @@ class _MovieDetailViewState extends State<MovieDetailView> with TickerProviderSt
           actions: [
             Padding(
               padding: EdgeInsets.only(right: AppDefaults.kPageSidePadding.right),
-              child: WishlistIcon(
-                movieId: data.id,
-              ),
+              child: Builder(builder: (context) {
+                return CustomInkWell(
+                  onTap: () {
+                    context.read<MovieDetailViewModel>().add(ToggleFavMovie());
+                  },
+                  child: WishlistIcon(
+                    isFavourite: data.isFavourite,
+                    movieId: data.id,
+                  ),
+                );
+              }),
             )
           ],
           title: Text(

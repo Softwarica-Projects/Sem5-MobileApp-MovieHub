@@ -19,6 +19,8 @@ class ApiUrl {
   static String movieDetail(String id) => "movies/$id/detail";
   static String rateMovie(String id) => "movies/$id/rate";
   static String markMovieAsView(String id) => "movies/$id/view";
+  static String toggleFavourite(String id) => "movies/$id/toggle-favorites";
+  static String getFavouriteMovies = "auth/favorites";
 
   ///[Genre]
   static String genreList = "genres";

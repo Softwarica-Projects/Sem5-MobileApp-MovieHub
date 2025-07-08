@@ -68,7 +68,7 @@ class MovieRemoteDataSource implements IMovieDataSource {
           data.id,
         ),
         data: data.toMap());
-    return response.toString();
+    return response['message'].toString();
   }
 
   @override

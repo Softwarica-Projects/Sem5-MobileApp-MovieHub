@@ -6,6 +6,12 @@ import 'package:moviehub/feature/auth/domain/use_case/login_usecase.dart';
 import 'package:moviehub/feature/auth/domain/use_case/register_usecase.dart';
 import 'package:moviehub/feature/auth/presentation/view_model/login/login_view_model.dart';
 import 'package:moviehub/feature/auth/presentation/view_model/signup/signup_view_model.dart';
+import 'package:moviehub/feature/favourite/data/data_source/remote_datasource/favourite_remote_datasource.dart';
+import 'package:moviehub/feature/favourite/data/repository/remote_repository/favourite_remote_repository.dart';
+import 'package:moviehub/feature/favourite/domain/repository/favourite_repository.dart';
+import 'package:moviehub/feature/favourite/domain/use_case/get_fav_movie_list_use_case.dart';
+import 'package:moviehub/feature/favourite/domain/use_case/toggle_fav_movie_use_case.dart';
+import 'package:moviehub/feature/favourite/presentation/view_model/fav_movie_list_view_model.dart';
 import 'package:moviehub/feature/genre/data/data_source/remote_datasource/genre_remote_datasource.dart';
 import 'package:moviehub/feature/genre/data/repository/remote_repository/genre_remote_repository.dart';
 import 'package:moviehub/feature/genre/domain/repository/genre_repository.dart';
@@ -24,7 +30,7 @@ import 'package:moviehub/feature/movie/data/repository/remote_repository/movie_r
 import 'package:moviehub/feature/movie/domain/repository/movie_repository.dart';
 import 'package:moviehub/feature/movie/domain/use_case/get_genre_movie_list_use_case.dart';
 import 'package:moviehub/feature/movie/domain/use_case/get_movie_detail_use_case.dart';
-import 'package:moviehub/feature/movie/domain/use_case/mark_view_movie_use_case%20copy.dart';
+import 'package:moviehub/feature/movie/domain/use_case/mark_view_movie_use_case.dart';
 import 'package:moviehub/feature/movie/domain/use_case/rate_movie_use_case.dart';
 import 'package:moviehub/feature/movie/presentation/genre_movie_list/view_model/genre_movie_list_view_model.dart';
 import 'package:moviehub/feature/movie/presentation/movie_detail/view_model/movie_detail/movie_detail_view_model.dart';
@@ -82,14 +88,9 @@ _dataSource() {
   locator.registerFactory<GenreRemoteDataSource>(
     () => GenreRemoteDataSource(locator<HttpService>()),
   );
-
-  // locator.registerFactory<IGenreDataSource>(
-  //   () => GenreRemoteDataSource(locator<HttpService>()),
-  // );
-
-  // locator.registerSingleton<IMovieDataSource>(
-  //   MovieRemoteDataSource(locator<HttpService>()),
-  // );
+  locator.registerFactory<FavouriteRemoteDataSource>(
+    () => FavouriteRemoteDataSource(locator<HttpService>()),
+  );
 }
 
 _services() {
@@ -109,6 +110,9 @@ _repository() {
   );
   locator.registerFactory<IGenreRepository>(
     () => GenreRemoteRepository(locator<GenreRemoteDataSource>()),
+  );
+  locator.registerFactory<IFavouriteRepository>(
+    () => FavouriteRemoteRepository(locator<FavouriteRemoteDataSource>()),
   );
 }
 
@@ -152,6 +156,13 @@ _useCase() {
   locator.registerFactory(() => GetReleasingSoonMoviesUseCase(
         locator<IMovieRepository>(),
       ));
+  locator.registerFactory(() => ToggleFavMovieUseCase(
+        locator<IFavouriteRepository>(),
+      ));
+  locator.registerFactory(() => GetFavMovieListUseCase(
+        locator<IFavouriteRepository>(),
+      ));
+  //   locf
 }
 
 _viewModel() {
@@ -166,6 +177,8 @@ _viewModel() {
   locator.registerFactory(() => GenreListViewModel(locator<GetGenresUseCase>()));
   locator.registerFactoryParam<GenreMovieListViewModel, String?, void>((genreId, _) => GenreMovieListViewModel(locator<GetGenreMovieListUseCase>(), genreId));
   locator.registerFactory(() => SearchViewModel(locator<SearchMovieUseCase>()));
-  locator.registerFactoryParam<MovieDetailViewModel, String, void>((movieId, _) => MovieDetailViewModel(locator<GetMovieDetailUseCase>(), locator<MarkViewMovieUseCase>(), movieId));
+  locator.registerFactory(() => FavMovieListViewModel(locator<GetFavMovieListUseCase>()));
+  locator.registerFactoryParam<MovieDetailViewModel, String, void>(
+      (movieId, _) => MovieDetailViewModel(locator<GetMovieDetailUseCase>(), locator<MarkViewMovieUseCase>(), locator<ToggleFavMovieUseCase>(), movieId));
   locator.registerFactoryParam<RateMovieViewModel, String, void>((movieId, _) => RateMovieViewModel(locator<RateMovieUseCase>(), movieId));
 }

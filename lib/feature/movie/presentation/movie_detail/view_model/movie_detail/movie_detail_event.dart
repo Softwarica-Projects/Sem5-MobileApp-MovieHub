@@ -5,3 +5,7 @@ abstract class MovieDetailEvent {}
 class FetchMovieDetail extends MovieDetailEvent {
   FetchMovieDetail();
 }
+
+class ToggleFavMovie extends MovieDetailEvent {
+  ToggleFavMovie();
+}

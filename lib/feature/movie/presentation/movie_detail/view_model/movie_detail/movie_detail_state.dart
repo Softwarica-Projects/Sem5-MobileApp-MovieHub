@@ -16,3 +16,12 @@ class MovieDetailError extends MovieDetailState implements ErrorState {
   final String message;
   MovieDetailError(this.message);
 }
+
+class ToggleFavLoading extends MovieDetailState implements LoadingState {}
+
+class ToggleFavSuccess extends MovieDetailState implements LoadedState {
+  final String message;
+  ToggleFavSuccess(this.message);
+}
+
+class ToggleFavError extends MovieDetailState implements LoadingState {}
