@@ -7,6 +7,7 @@ import 'package:moviehub/feature/home/presentation/featured/view/featured_view.d
 import 'package:moviehub/feature/home/presentation/genre/view/genre_view.dart';
 import 'package:moviehub/feature/home/presentation/popular/view/pouplar_view.dart';
 import 'package:moviehub/feature/home/presentation/recently_added/view/recently_added_view.dart';
+import 'package:moviehub/feature/home/presentation/releasing_soon/view/releasing_soon_view.dart';
 import 'package:moviehub/services/core/preference_service.dart';
 import 'package:moviehub/shared/widgets/circular_image_widget.dart';
 import 'package:moviehub/shared/widgets/form_seperator_box.dart';
@@ -66,6 +67,8 @@ class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin 
             PouplarView(),
             widgetSpacer(),
             RecentlyAddedView(),
+            widgetSpacer(),
+            ReleasingSoonView(),
             widgetSpacer(),
           ],
         ),
