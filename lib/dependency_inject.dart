@@ -1,7 +1,4 @@
 import 'package:get_it/get_it.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:moviehub/feature/auth/data/data_source/auth_data_source.dart';
-import 'package:moviehub/feature/auth/data/data_source/local_datasource/auth_local_datasource.dart';
 import 'package:moviehub/feature/auth/data/data_source/remote_datasource/auth_remote_datasource.dart';
 import 'package:moviehub/feature/auth/data/repository/remote_repository/auth_remote_repository.dart';
 import 'package:moviehub/feature/auth/domain/repository/auth_repository.dart';
@@ -9,7 +6,12 @@ import 'package:moviehub/feature/auth/domain/use_case/login_usecase.dart';
 import 'package:moviehub/feature/auth/domain/use_case/register_usecase.dart';
 import 'package:moviehub/feature/auth/presentation/view_model/login/login_view_model.dart';
 import 'package:moviehub/feature/auth/presentation/view_model/signup/signup_view_model.dart';
-import 'package:moviehub/feature/genre/data/data_source/genre_data_source.dart';
+import 'package:moviehub/feature/favourite/data/data_source/remote_datasource/favourite_remote_datasource.dart';
+import 'package:moviehub/feature/favourite/data/repository/remote_repository/favourite_remote_repository.dart';
+import 'package:moviehub/feature/favourite/domain/repository/favourite_repository.dart';
+import 'package:moviehub/feature/favourite/domain/use_case/get_fav_movie_list_use_case.dart';
+import 'package:moviehub/feature/favourite/domain/use_case/toggle_fav_movie_use_case.dart';
+import 'package:moviehub/feature/favourite/presentation/view_model/fav_movie_list_view_model.dart';
 import 'package:moviehub/feature/genre/data/data_source/remote_datasource/genre_remote_datasource.dart';
 import 'package:moviehub/feature/genre/data/repository/remote_repository/genre_remote_repository.dart';
 import 'package:moviehub/feature/genre/domain/repository/genre_repository.dart';
@@ -17,14 +19,24 @@ import 'package:moviehub/feature/home/domain/use_case/get_featured_movies_usecas
 import 'package:moviehub/feature/home/domain/use_case/get_genres_usecase.dart';
 import 'package:moviehub/feature/home/domain/use_case/get_popular_movies_usecase.dart';
 import 'package:moviehub/feature/home/domain/use_case/get_recently_added_movies_usecase.dart';
+import 'package:moviehub/feature/home/domain/use_case/get_releasing_soon_movies_usecase.dart';
 import 'package:moviehub/feature/home/presentation/featured/view_model/featured_movies_view_model.dart';
 import 'package:moviehub/feature/home/presentation/genre/view_model/genre_list_view_model.dart';
 import 'package:moviehub/feature/home/presentation/popular/view_model/popular_list_view_model.dart';
 import 'package:moviehub/feature/home/presentation/recently_added/view_model/recently_added_view_model.dart';
-import 'package:moviehub/feature/movie/data/data_source/movie_data_source.dart';
+import 'package:moviehub/feature/home/presentation/releasing_soon/view_model/releasing_soon_view_model.dart';
 import 'package:moviehub/feature/movie/data/data_source/remote_datasource/movie_remote_datasource.dart';
 import 'package:moviehub/feature/movie/data/repository/remote_repository/movie_remote_repository.dart';
 import 'package:moviehub/feature/movie/domain/repository/movie_repository.dart';
+import 'package:moviehub/feature/movie/domain/use_case/get_genre_movie_list_use_case.dart';
+import 'package:moviehub/feature/movie/domain/use_case/get_movie_detail_use_case.dart';
+import 'package:moviehub/feature/movie/domain/use_case/mark_view_movie_use_case.dart';
+import 'package:moviehub/feature/movie/domain/use_case/rate_movie_use_case.dart';
+import 'package:moviehub/feature/movie/presentation/genre_movie_list/view_model/genre_movie_list_view_model.dart';
+import 'package:moviehub/feature/movie/presentation/movie_detail/view_model/movie_detail/movie_detail_view_model.dart';
+import 'package:moviehub/feature/movie/presentation/movie_detail/view_model/rating/rate_movie_view_model.dart';
+import 'package:moviehub/feature/search/domain/use_case/saerch_movie_use_case.dart';
+import 'package:moviehub/feature/search/presentation/view_model/search_view_model.dart';
 import 'package:moviehub/services/auth/auth_service.dart';
 import 'package:moviehub/services/core/http_service.dart';
 import 'package:moviehub/services/core/preference_service.dart';
@@ -76,14 +88,9 @@ _dataSource() {
   locator.registerFactory<GenreRemoteDataSource>(
     () => GenreRemoteDataSource(locator<HttpService>()),
   );
-
-  // locator.registerFactory<IGenreDataSource>(
-  //   () => GenreRemoteDataSource(locator<HttpService>()),
-  // );
-
-  // locator.registerSingleton<IMovieDataSource>(
-  //   MovieRemoteDataSource(locator<HttpService>()),
-  // );
+  locator.registerFactory<FavouriteRemoteDataSource>(
+    () => FavouriteRemoteDataSource(locator<HttpService>()),
+  );
 }
 
 _services() {
@@ -103,6 +110,9 @@ _repository() {
   );
   locator.registerFactory<IGenreRepository>(
     () => GenreRemoteRepository(locator<GenreRemoteDataSource>()),
+  );
+  locator.registerFactory<IFavouriteRepository>(
+    () => FavouriteRemoteRepository(locator<FavouriteRemoteDataSource>()),
   );
 }
 
@@ -128,6 +138,31 @@ _useCase() {
   locator.registerFactory(() => GetGenresUseCase(
         locator<IGenreRepository>(),
       ));
+  locator.registerFactory(() => GetGenreMovieListUseCase(
+        locator<IMovieRepository>(),
+      ));
+  locator.registerFactory(() => SearchMovieUseCase(
+        locator<IMovieRepository>(),
+      ));
+  locator.registerFactory(() => GetMovieDetailUseCase(
+        locator<IMovieRepository>(),
+      ));
+  locator.registerFactory(() => RateMovieUseCase(
+        locator<IMovieRepository>(),
+      ));
+  locator.registerFactory(() => MarkViewMovieUseCase(
+        locator<IMovieRepository>(),
+      ));
+  locator.registerFactory(() => GetReleasingSoonMoviesUseCase(
+        locator<IMovieRepository>(),
+      ));
+  locator.registerFactory(() => ToggleFavMovieUseCase(
+        locator<IFavouriteRepository>(),
+      ));
+  locator.registerFactory(() => GetFavMovieListUseCase(
+        locator<IFavouriteRepository>(),
+      ));
+  //   locf
 }
 
 _viewModel() {
@@ -138,5 +173,12 @@ _viewModel() {
   locator.registerFactory(() => FeaturedMoviesViewModel(locator<GetFeaturedMoviesUseCase>()));
   locator.registerFactory(() => PopularListViewModel(locator<GetPopularMoviesUseCase>()));
   locator.registerFactory(() => RecentlyAddedViewModel(locator<GetRecentlyAddedMoviesUseCase>()));
+  locator.registerFactory(() => ReleasingSoonViewModel(locator<GetReleasingSoonMoviesUseCase>()));
   locator.registerFactory(() => GenreListViewModel(locator<GetGenresUseCase>()));
+  locator.registerFactoryParam<GenreMovieListViewModel, String?, void>((genreId, _) => GenreMovieListViewModel(locator<GetGenreMovieListUseCase>(), genreId));
+  locator.registerFactory(() => SearchViewModel(locator<SearchMovieUseCase>()));
+  locator.registerFactory(() => FavMovieListViewModel(locator<GetFavMovieListUseCase>()));
+  locator.registerFactoryParam<MovieDetailViewModel, String, void>(
+      (movieId, _) => MovieDetailViewModel(locator<GetMovieDetailUseCase>(), locator<MarkViewMovieUseCase>(), locator<ToggleFavMovieUseCase>(), movieId));
+  locator.registerFactoryParam<RateMovieViewModel, String, void>((movieId, _) => RateMovieViewModel(locator<RateMovieUseCase>(), movieId));
 }

@@ -1,21 +1,28 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
+
 import 'package:moviehub/core/routes/routes.dart';
+import 'package:moviehub/core/theme/app_colors.dart';
 import 'package:moviehub/feature/home/presentation/widget/rating_widget.dart';
 import 'package:moviehub/feature/movie/domain/entity/movie_entity.dart';
 import 'package:moviehub/shared/widgets/custom_ink_well.dart';
 import 'package:moviehub/shared/widgets/image_widget.dart';
+import 'package:moviehub/shared/widgets/label_widget.dart';
 
 class GridMovieWidget extends StatelessWidget {
   final MovieEntity data;
+  final bool showReleaseDate;
   const GridMovieWidget({
     Key? key,
     required this.data,
+    this.showReleaseDate = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var releaseDate = DateTime.parse(data.releaseDate);
     return CustomInkWell(
       onTap: () {
         Navigator.of(context).pushNamed(
@@ -47,9 +54,15 @@ class GridMovieWidget extends StatelessWidget {
                       Positioned(
                         right: 8,
                         top: 8,
-                        child: RatingBoxWidget(
-                          rating: data.averageRating,
-                        ),
+                        child: showReleaseDate
+                            ? Chip(
+                                label: Text(DateFormat("d MMM yyyy").format(releaseDate)),
+                                backgroundColor: AppColors.primary,
+                                labelStyle: TextStyle(color: Colors.white, fontSize: 12.sp),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.sp)))
+                            : RatingBoxWidget(
+                                rating: data.averageRating,
+                              ),
                       )
                     ],
                   ),

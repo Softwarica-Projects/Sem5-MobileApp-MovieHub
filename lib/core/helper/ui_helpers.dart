@@ -23,7 +23,7 @@ Future<dynamic> showBottomSheetCustom(BuildContext context, Widget widget, {Stri
     enableDrag: dragEnable ?? true,
     builder: (context) => Container(
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: AppColors.cardBackgroundColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(16.0),
           topRight: Radius.circular(16.0),
@@ -37,11 +37,12 @@ Future<dynamic> showBottomSheetCustom(BuildContext context, Widget widget, {Stri
               child: (title != null)
                   ? Text(
                       title,
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(fontWeight: FontWeight.w600, fontSize: 20.sp),
+                      style: Theme.of(context).textTheme.displaySmall?.copyWith(fontWeight: FontWeight.w600, fontSize: 20.sp, color: Colors.white),
                     )
                   : const SizedBox.shrink(),
             ),
             CloseButton(
+              color: Colors.white,
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -159,10 +160,7 @@ void asyncCallHelperWithLoadingBar(BuildContext context, {required Future<dynami
 Widget movieReleaseOrNotChip(DateTime releaseDate) {
   var isReleased = releaseDate.isBefore(DateTime.now());
   return Chip(
-      // side: BorderSide.none,
-      // labelPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-      // padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-      label: Text(isReleased ? "Released" : "Cmming Soon"),
+      label: Text(isReleased ? "Released" : "Comming Soon"),
       backgroundColor: isReleased ? AppColors.primary : AppColors.secondary,
       labelStyle: TextStyle(color: Colors.white, fontSize: 12.sp),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.sp)));

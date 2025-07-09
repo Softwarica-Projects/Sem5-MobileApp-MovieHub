@@ -23,8 +23,10 @@ class MovieEntity {
   final String? description;
   final List<CastModel> cast;
   final List<ReviewModel> ratings;
+  final bool isFavourite;
   MovieEntity({
     required this.id,
+    required this.isFavourite,
     required this.genreId,
     required this.genre,
     this.movieLink,
@@ -40,34 +42,16 @@ class MovieEntity {
     required this.ratings,
   });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'genreId': genreId,
-      'genre': genre,
-      'movieLink': movieLink,
-      'trailerLink': trailerLink,
-      'runtime': runtime,
-      'releaseDate': releaseDate,
-      'averageRating': averageRating,
-      'coverImage': coverImage,
-      'title': title,
-      'movieType': movieType,
-      'description': description,
-      'cast': cast.map((x) => x.toMap()).toList(),
-      'ratings': ratings.map((x) => x.toMap()).toList(),
-    };
-  }
-
   factory MovieEntity.fromMap(Map<String, dynamic> map) {
     try {
       var image = map['coverImage'] as String? ?? "";
       if (image.isNotEmpty && !image.startsWith('http')) {
-        image = "${getEnvironment.domainUrl}${image}";
+        image = "${getEnvironment.domainUrl}$image";
       }
       return MovieEntity(
+        isFavourite: (map['isFavourite'] ?? false),
         id: map['_id'] as String,
-        genreId: map['genre'] ?? "",
+        genreId: map['genre'] == null ? "" : (map['genre'] is String ? map['genre'] : map['genre']['name']),
         genre: map['genreName'] ?? "",
         movieLink: map['movieLink'] != null ? map['movieLink'] as String : null,
         trailerLink: map['trailerLink'] != null ? map['trailerLink'] as String : null,
@@ -93,8 +77,6 @@ class MovieEntity {
       rethrow;
     }
   }
-
-  String toJson() => json.encode(toMap());
 
   factory MovieEntity.fromJson(String source) => MovieEntity.fromMap(json.decode(source) as Map<String, dynamic>);
 

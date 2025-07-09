@@ -12,8 +12,15 @@ class ApiUrl {
 
   ///[Movie]
   static String featuredMovies = "movies/featured-movies";
+  static String releasingSoonMovies = "movies/soon-releasing";
   static String recentlyAddedMovies = "movies/recent";
   static String popularMovies = "movies/top-viewed";
+  static String searchMovie = "movies/search";
+  static String movieDetail(String id) => "movies/$id/detail";
+  static String rateMovie(String id) => "movies/$id/rate";
+  static String markMovieAsView(String id) => "movies/$id/view";
+  static String toggleFavourite(String id) => "movies/$id/toggle-favorites";
+  static String getFavouriteMovies = "auth/favorites";
 
   ///[Genre]
   static String genreList = "genres";
