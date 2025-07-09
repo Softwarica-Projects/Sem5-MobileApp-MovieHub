@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:moviehub/core/routes/routes.dart';
-import 'package:moviehub/dependency_inject.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviehub/feature/favourite/presentation/view/fav_movie_list_view.dart';
+import 'package:moviehub/feature/favourite/presentation/view_model/fav_movie_list_view_model.dart';
 import 'package:moviehub/feature/home/presentation/home/view/home_view.dart';
 import 'package:moviehub/feature/home/presentation/widget/bottom_bar.dart';
+import 'package:moviehub/feature/profile/presentation/profile/view/profile.dart';
+import 'package:moviehub/feature/profile/presentation/profile/view_model/user_view_model.dart';
 import 'package:moviehub/feature/search/presentation/view/search_view.dart';
-import 'package:moviehub/services/core/preference_service.dart';
-import 'package:moviehub/shared/widgets/center_hint_text.dart';
 
 class DashboadView extends StatefulWidget {
   const DashboadView({super.key});
@@ -21,6 +21,8 @@ class _DashboadViewState extends State<DashboadView> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
+    context.read<UserViewModel>().add(FetchUserEvent());
+    context.read<FavMovieListViewModel>().add(FetchMovies());
     _tabBarController = TabController(length: 4, vsync: this);
     _tabBarController.addListener(() {
       _tabBarIndex.value = _tabBarController.index;
@@ -43,21 +45,7 @@ class _DashboadViewState extends State<DashboadView> with SingleTickerProviderSt
             }),
         body: TabBarView(
           controller: _tabBarController,
-          children: [
-            HomeView(),
-            SearchView(),
-            FavMovieListView(),
-            Center(
-              child: TextButton(
-                onPressed: () {
-                  locator<PreferenceService>().clearAll();
-                  Navigator.of(context).pushNamedAndRemoveUntil(Routes.loginPage, (route) => false);
-                },
-                child: Text("Logout "),
-              ),
-            ),
-            // CenterHintText(text: "Profile Page"),
-          ],
+          children: [HomeView(), SearchView(), FavMovieListView(), ProfileView()],
         ),
       ),
     );

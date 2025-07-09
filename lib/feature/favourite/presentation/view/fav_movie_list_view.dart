@@ -10,36 +10,42 @@ import 'package:moviehub/feature/search/presentation/widget/search_movie_widget.
 import 'package:moviehub/shared/widgets/center_hint_text.dart';
 import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 
-class FavMovieListView extends StatelessWidget {
+class FavMovieListView extends StatefulWidget {
   const FavMovieListView({super.key});
 
   @override
+  State<FavMovieListView> createState() => _FavMovieListViewState();
+}
+
+class _FavMovieListViewState extends State<FavMovieListView> with AutomaticKeepAliveClientMixin<FavMovieListView> {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Favourites"),
         centerTitle: false,
         titleSpacing: AppDefaults.kPageSidePadding.left,
       ),
-      body: BlocProviderView<FavMovieListViewModel>(
-        objLocator: () => locator<FavMovieListViewModel>(),
-        child: Padding(
-          padding: AppDefaults.kPageSidePadding,
-          child: BlocBuilderView<FavMovieListViewModel, FavMovieState, FavMovieLoaded>(
-            child: (context, state) {
-              if (state.movies.isEmpty) {
-                return const CenterHintText(text: "No Favourites found");
-              }
-              return ListView.separated(
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                itemBuilder: (context, index) => SearchMovieWidget(movie: state.movies[index]),
-                separatorBuilder: (context, index) => FormSeperatorBox(),
-                itemCount: state.movies.length,
-              );
-            },
-          ),
+      body: Padding(
+        padding: AppDefaults.kPageSidePadding,
+        child: BlocBuilderView<FavMovieListViewModel, FavMovieState, FavMovieLoaded>(
+          child: (context, state) {
+            if (state.movies.isEmpty) {
+              return const CenterHintText(text: "No Favourites found");
+            }
+            return ListView.separated(
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              itemBuilder: (context, index) => SearchMovieWidget(movie: state.movies[index]),
+              separatorBuilder: (context, index) => FormSeperatorBox(),
+              itemCount: state.movies.length,
+            );
+          },
         ),
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
