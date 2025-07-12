@@ -155,13 +155,13 @@ class Themes {
       );
   OutlinedButtonThemeData outlinedButtonTheme() => OutlinedButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: WidgetStateProperty.resolveWith<Color>((states) => Colors.white),
+          foregroundColor: WidgetStateProperty.resolveWith<Color>((states) => AppColors.primary),
           side: WidgetStateProperty.resolveWith((states) => const BorderSide(color: AppColors.primary)),
-          iconColor: WidgetStateProperty.resolveWith((states) => Colors.white),
+          iconColor: WidgetStateProperty.resolveWith((states) => AppColors.primary),
           textStyle: WidgetStateProperty.resolveWith((states) => TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w600,
-                color: Colors.black,
+                color: AppColors.primary,
               )),
           shape: WidgetStateProperty.resolveWith<OutlinedBorder>((states) => RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppDefaults.borderRadius),

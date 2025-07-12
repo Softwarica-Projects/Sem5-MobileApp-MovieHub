@@ -7,6 +7,7 @@ import 'package:moviehub/feature/auth/data/model/user_hive_model.dart';
 import 'package:moviehub/feature/auth/domain/entity/auth_response_entity.dart';
 import 'package:moviehub/feature/auth/domain/entity/login_entity.dart';
 import 'package:moviehub/feature/auth/domain/entity/signup_entity.dart';
+import 'package:moviehub/feature/profile/domain/entity/change_password_entity.dart';
 
 class AuthLocalDatasource implements IAuthDataSource {
   final HiveInterface _hiveInterface;
@@ -38,5 +39,10 @@ class AuthLocalDatasource implements IAuthDataSource {
     }
     var hiveModel = UserHiveModel.fromSignupModel(data);
     await box.put(hiveModel.id, hiveModel);
+  }
+
+  @override
+  Future<String> changePassword(ChangePasswordEntity data) {
+    throw UnimplementedError();
   }
 }

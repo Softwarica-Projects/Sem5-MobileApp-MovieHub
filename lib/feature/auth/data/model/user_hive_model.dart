@@ -1,9 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:moviehub/core/constant/hive_table_constant.dart';
-import 'package:moviehub/feature/auth/domain/entity/login_entity.dart';
 import 'package:moviehub/feature/auth/domain/entity/signup_entity.dart';
-import 'package:moviehub/feature/auth/domain/entity/user_entity.dart';
+import 'package:moviehub/feature/profile/domain/entity/user_entity.dart';
 import 'package:uuid/uuid.dart';
 
 part 'user_hive_model.g.dart';

@@ -1,9 +1,5 @@
 import 'package:moviehub/feature/genre/domain/entity/genre_entity.dart';
 import 'package:moviehub/feature/movie/domain/entity/movie_entity.dart';
-import 'package:moviehub/shared/model/cast_model.dart';
-import 'package:moviehub/shared/model/genre_model.dart';
-import 'package:moviehub/shared/model/movie_model.dart';
-import 'package:moviehub/shared/model/review_model.dart';
 
 Future<void> demoDelay() => Future.delayed(Duration(seconds: 2));
 final List<MovieEntity> movieData = [];

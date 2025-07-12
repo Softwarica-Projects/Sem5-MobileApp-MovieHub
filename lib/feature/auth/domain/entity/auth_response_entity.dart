@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:moviehub/feature/auth/domain/entity/user_entity.dart';
+import 'package:moviehub/feature/profile/domain/entity/user_entity.dart';
 
 class AuthResponseEntity extends UserEntity {
   final String token;

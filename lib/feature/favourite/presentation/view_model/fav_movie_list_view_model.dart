@@ -12,7 +12,6 @@ class FavMovieListViewModel extends Bloc<FavMovieEvent, FavMovieState> {
     this._useCase,
   ) : super(FavMovieInitial()) {
     on<FetchMovies>(getList);
-    add(FetchMovies());
   }
 
   Future<void> getList(FetchMovies event, Emitter<FavMovieState> emit) async {
