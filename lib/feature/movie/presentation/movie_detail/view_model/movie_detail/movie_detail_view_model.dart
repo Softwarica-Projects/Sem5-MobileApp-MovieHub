@@ -2,9 +2,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviehub/core/bloc/state/bloc_state.dart';
 import 'package:moviehub/feature/favourite/domain/use_case/toggle_fav_movie_use_case.dart';
+import 'package:moviehub/feature/favourite/presentation/view_model/fav_movie_list_view_model.dart';
 import 'package:moviehub/feature/movie/domain/entity/movie_entity.dart';
 import 'package:moviehub/feature/movie/domain/use_case/get_movie_detail_use_case.dart';
 import 'package:moviehub/feature/movie/domain/use_case/mark_view_movie_use_case.dart';
+import 'package:moviehub/main.dart';
 
 part 'movie_detail_event.dart';
 part 'movie_detail_state.dart';
@@ -46,6 +48,7 @@ class MovieDetailViewModel extends Bloc<MovieDetailEvent, MovieDetailState> {
         return true;
       }, (y) {
         emit(ToggleFavSuccess(response.getOrElse(() => "Success")));
+        navigatorKey.currentState!.context.read<FavMovieListViewModel>().add(FetchMovies());
         emit(MovieDetailLoaded(y));
         return true;
       });

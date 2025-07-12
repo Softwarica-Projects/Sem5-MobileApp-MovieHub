@@ -2,7 +2,7 @@ class Validators {
   Validators._();
   static String? emptyFieldValidator(String? value) => (value ?? "").trim().isEmpty ? "Field Required" : null;
 
-  static String? emailValidator(String? value) => (value ?? "").trim().isEmpty ? "Field Required" : "Invalid Email Address";
+  static String? emailValidator(String? value) => (value ?? "").trim().isEmpty ? "Field Required" : null;
 
   static String? integerValidator(String? value) => (value ?? "").trim().isEmpty
       ? "Field Required"

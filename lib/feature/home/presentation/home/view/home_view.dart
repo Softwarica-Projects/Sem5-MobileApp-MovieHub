@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:moviehub/core/bloc/view/bloc_builder_view.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/core/helper/ui_helpers.dart';
 import 'package:moviehub/dependency_inject.dart';
@@ -8,6 +9,7 @@ import 'package:moviehub/feature/home/presentation/genre/view/genre_view.dart';
 import 'package:moviehub/feature/home/presentation/popular/view/pouplar_view.dart';
 import 'package:moviehub/feature/home/presentation/recently_added/view/recently_added_view.dart';
 import 'package:moviehub/feature/home/presentation/releasing_soon/view/releasing_soon_view.dart';
+import 'package:moviehub/feature/profile/presentation/profile/view_model/user_view_model.dart';
 import 'package:moviehub/services/core/preference_service.dart';
 import 'package:moviehub/shared/widgets/circular_image_widget.dart';
 import 'package:moviehub/shared/widgets/form_seperator_box.dart';
@@ -29,9 +31,20 @@ class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin 
         centerTitle: false,
         title: Row(
           children: [
-            CircularImageWidget(
-              radius: 20,
-              fit: BoxFit.fill,
+            BlocBuilderView<UserViewModel, UserState, UserLoaded>(
+              errorWidget: (x, _) => CircularImageWidget(
+                radius: 20,
+                fit: BoxFit.fill,
+              ),
+              loadingWidget: CircularImageWidget(
+                radius: 20,
+                fit: BoxFit.fill,
+              ),
+              child: (x, state) => CircularImageWidget(
+                radius: 20,
+                fit: BoxFit.fill,
+                imageUrl: state.data.imageUrl,
+              ),
             ),
             adaptableWidth(width: 14),
             Column(

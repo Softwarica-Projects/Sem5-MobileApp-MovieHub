@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:moviehub/core/utility/usecase.dart';
 import 'package:moviehub/feature/favourite/domain/repository/favourite_repository.dart';
-import 'package:moviehub/feature/movie/domain/repository/movie_repository.dart';
 
 class ToggleFavMovieUseCase implements UsecaseWithParams<String, String> {
   final IFavouriteRepository _repository;
