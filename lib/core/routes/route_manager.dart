@@ -7,6 +7,7 @@ import 'package:moviehub/feature/genre/presentation/view/genre_list_view.dart';
 import 'package:moviehub/feature/movie/presentation/genre_movie_list/view/genre_movie_list_view.dart';
 import 'package:moviehub/feature/movie/presentation/movie_detail/view/movie_detail_view.dart';
 import 'package:moviehub/feature/profile/presentation/change_password/view/change_password.dart';
+import 'package:moviehub/feature/profile/presentation/edit_profile/view/edit_profile_view.dart';
 import 'package:moviehub/feature/splash/view/splash_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -21,6 +22,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return buildRoute(GenreListView());
     case Routes.changePassword:
       return buildRoute(ChangePasswordView());
+
+    case Routes.updateProfile:
+      return buildRoute(EditProfileView());
     case Routes.genreMovieList:
       return buildRoute(GenreMovieListView(
         genreId: (settings.arguments as Map? ?? {})['genreId'],

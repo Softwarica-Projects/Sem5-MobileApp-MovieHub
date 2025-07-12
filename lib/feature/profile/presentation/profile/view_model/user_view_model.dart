@@ -41,11 +41,13 @@ class UserViewModel extends Bloc<UserEvent, UserState> {
   }
 
   Future<void> _onUpdateEvent(UpdateUserEvent event, Emitter<UserState> emit) async {
-    emit(UserLoading());
+    emit(UpdateUserLoading());
     final response = await _updateUserUseCase.call(event.userEntity);
-    if (response.isRight()) {
-      add(FetchUserEvent());
+    if (!response.isRight()) {
+    } else {
+      emit(UserError("Error Uploading User"));
     }
+    add(FetchUserEvent());
   }
 
   Future<void> _onLogoutEvent(LogoutUserEvent event, Emitter<UserState> emit) async {

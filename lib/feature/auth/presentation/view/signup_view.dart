@@ -74,7 +74,7 @@ class _SignupViewState extends State<SignupView> {
                         title: "Email Address",
                         child: TextFormField(
                           controller: emailController,
-                          validator: Validators.emptyFieldValidator,
+                          validator: Validators.emailValidator,
                         ),
                       ),
                       FormSeperatorBox(),

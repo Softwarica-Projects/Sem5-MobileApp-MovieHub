@@ -21,14 +21,14 @@ class UserRemoteDataSource implements IUserDataSource {
   @override
   Future<String> updateUser(UserEntity data) async {
     var formData = data.toMap();
-    if (data.imageUrl != null && data.imageUrl!.isNetworkFile) {
+    if (data.imageUrl != null && !data.imageUrl!.isNetworkFile) {
       var file = await MultipartFile.fromFile(
         data.imageUrl!,
         filename: data.imageUrl!.split('/').last,
       );
       formData['image'] = file;
     }
-    var response = await _httpService.postDataFormData(ApiUrl.updateUser, data: data);
+    var response = await _httpService.putDataFormData(ApiUrl.updateUser, data: formData);
     return response['message'].toString();
   }
 }

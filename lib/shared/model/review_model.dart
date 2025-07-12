@@ -33,7 +33,7 @@ class ReviewModel {
 
   factory ReviewModel.fromMap(Map<String, dynamic> map) {
     return ReviewModel(
-      user: map['userName'] ?? "",
+      user: map['userId'] is Map ? map['userId']['name'] : map['userName'] ?? map['userId'] ?? "",
       review: map['review'] ?? "",
       rating: double.tryParse(map['rating'].toString()) ?? 0.0,
     );

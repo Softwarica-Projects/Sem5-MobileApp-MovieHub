@@ -9,7 +9,7 @@ class ApiUrl {
   static String login = "auth/login";
   static String register = "auth/register";
   static String changePassword = "auth/change-password";
-  static String updateUser = "auth/update-user";
+  static String updateUser = "auth/update-profile";
   static String getUser = "auth/me";
 
   ///[Movie]

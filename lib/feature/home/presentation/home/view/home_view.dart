@@ -32,6 +32,10 @@ class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin 
         title: Row(
           children: [
             BlocBuilderView<UserViewModel, UserState, UserLoaded>(
+              errorWidget: (x, _) => CircularImageWidget(
+                radius: 20,
+                fit: BoxFit.fill,
+              ),
               loadingWidget: CircularImageWidget(
                 radius: 20,
                 fit: BoxFit.fill,

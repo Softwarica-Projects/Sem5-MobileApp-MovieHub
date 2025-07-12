@@ -69,7 +69,7 @@ class _LoginViewState extends State<LoginView> {
                         title: "Email Address",
                         child: TextFormField(
                           controller: emailController,
-                          validator: Validators.emptyFieldValidator,
+                          validator: Validators.emailValidator,
                         ),
                       ),
                       FormSeperatorBox(),

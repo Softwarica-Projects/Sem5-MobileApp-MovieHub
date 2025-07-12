@@ -44,14 +44,13 @@ import 'package:moviehub/feature/profile/domain/use_case/get_user_use_case.dart'
 import 'package:moviehub/feature/profile/domain/use_case/logout_use_case%20copy.dart';
 import 'package:moviehub/feature/profile/domain/use_case/update_user_use_case.dart';
 import 'package:moviehub/feature/profile/presentation/change_password/view_model/change_password_view_model.dart';
+import 'package:moviehub/feature/profile/presentation/edit_profile/view_model/edit_profile_view_model.dart';
 import 'package:moviehub/feature/profile/presentation/profile/view_model/user_view_model.dart';
 import 'package:moviehub/feature/search/domain/use_case/saerch_movie_use_case.dart';
 import 'package:moviehub/feature/search/presentation/view_model/search_view_model.dart';
 import 'package:moviehub/services/auth/auth_service.dart';
 import 'package:moviehub/services/core/http_service.dart';
 import 'package:moviehub/services/core/preference_service.dart';
-import 'package:moviehub/services/general/general_service.dart';
-import 'package:moviehub/services/movie/movie_service.dart';
 
 final locator = GetIt.instance;
 
@@ -110,8 +109,6 @@ _dataSource() {
 _services() {
   final httpService = locator<HttpService>();
   locator.registerSingleton<AuthService>(AuthService(httpService));
-  locator.registerSingleton<GeneralService>(GeneralService(httpService));
-  locator.registerSingleton<MovieService>(MovieService(httpService));
 }
 
 _repository() {
@@ -218,4 +215,5 @@ _viewModel() {
   locator.registerFactory(() => UserViewModel(locator<GetUserUseCase>(), locator(), locator(), locator()));
 
   locator.registerFactory(() => ChangePasswordViewModel(locator()));
+  locator.registerFactory(() => EditProfileViewModel());
 }

@@ -9,14 +9,10 @@ Future<void> openLink(String urlString) async {
   }
   final Uri url = Uri.parse(urlString);
   try {
-    // if (await canLaunchUrl(url)) {
     await launchUrl(
       url,
       mode: LaunchMode.externalApplication,
     );
-    // } else {
-    //   throw ('Error: Could not launch');
-    // }
   } catch (e) {
     //
     rethrow;
@@ -55,15 +51,6 @@ openCall(String number) async {
     //
   }
 }
-
-final List<dynamic> passwordValidationValues = [
-  {"title": "Minimum 8 characters", "regexp": RegExp(r'^.{8,}$')},
-  {"title": "At least 1 letter", "regexp": RegExp(r'^(?=.*[a-zA-Z]).+$')},
-  {"title": "At least 1 capital letter", "regexp": RegExp(r'^(?=.*[A-Z]).+$')},
-  {"title": "At least 1 number", "regexp": RegExp(r'^(?=.*\d).+$')},
-  {"title": "At least 1 special character", "regexp": RegExp(r'^(?=.*[!@#$&*~()\[\]{}]).+$')},
-  {"title": "Maximum 40 characters", "regexp": RegExp(r'^.{0,40}$')}
-];
 
 String priceFormatter(double price, {bool addCurrency = false}) {
   final priceString = price.toString();
