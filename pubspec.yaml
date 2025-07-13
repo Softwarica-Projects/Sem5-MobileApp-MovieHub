@@ -57,6 +57,7 @@ dependencies:
       url: https://github.com/Rishan99/progress-dialog
       ref: main
   responsive_framework: ^0.2.0
+  shake: ^3.0.0
   shared_preferences: ^2.5.3
   shimmer: ^3.0.0
   smooth_page_indicator: ^1.2.1

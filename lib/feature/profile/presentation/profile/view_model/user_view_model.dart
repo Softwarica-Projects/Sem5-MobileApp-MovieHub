@@ -25,7 +25,7 @@ class UserViewModel extends Bloc<UserEvent, UserState> {
     on<FetchUserEvent>(_onFetch);
     on<UpdateUserEvent>(_onUpdateEvent);
     on<LogoutUserEvent>(_onLogoutEvent);
-    on<ShakeEvent>(_onShakeEvent);
+    on<ShakePhoneEvent>(_onShakeEvent);
   }
 
   Future<void> _onFetch(FetchUserEvent event, Emitter<UserState> emit) async {
@@ -54,7 +54,7 @@ class UserViewModel extends Bloc<UserEvent, UserState> {
     await _logoutUseCase.call();
   }
 
-  Future<void> _onShakeEvent(ShakeEvent event, Emitter<UserState> emit) async {
+  Future<void> _onShakeEvent(ShakePhoneEvent event, Emitter<UserState> emit) async {
     await _shakeNavigationUseCase.call();
   }
 }

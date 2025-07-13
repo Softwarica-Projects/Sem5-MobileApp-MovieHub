@@ -15,6 +15,6 @@ class LogoutUserEvent extends UserEvent {
   LogoutUserEvent();
 }
 
-class ShakeEvent extends UserEvent {
-  ShakeEvent();
+class ShakePhoneEvent extends UserEvent {
+  ShakePhoneEvent();
 }
