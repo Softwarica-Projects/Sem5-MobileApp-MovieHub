@@ -48,7 +48,6 @@ import 'package:moviehub/feature/profile/presentation/edit_profile/view_model/ed
 import 'package:moviehub/feature/profile/presentation/profile/view_model/user_view_model.dart';
 import 'package:moviehub/feature/search/domain/use_case/saerch_movie_use_case.dart';
 import 'package:moviehub/feature/search/presentation/view_model/search_view_model.dart';
-import 'package:moviehub/services/auth/auth_service.dart';
 import 'package:moviehub/services/core/http_service.dart';
 import 'package:moviehub/services/core/preference_service.dart';
 
@@ -106,10 +105,7 @@ _dataSource() {
   );
 }
 
-_services() {
-  final httpService = locator<HttpService>();
-  locator.registerSingleton<AuthService>(AuthService(httpService));
-}
+_services() {}
 
 _repository() {
   locator.registerFactory<IAuthRepository>(
