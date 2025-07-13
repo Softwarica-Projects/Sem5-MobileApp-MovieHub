@@ -69,3 +69,15 @@ Implemented comprehensive API integration for all dashboard features:
 - **Popular Movies**: Movies with high ratings
 - **Recently Added Movies**: List of movies that are added recently
 - **Genres**: Genre list with updated categories
+
+
+## Sprint 5 Features
+
+### 1. Movie Details
+User can see detailed information of a movie along with trailer link and cast 
+
+### 2.Review
+User can view and give your own review to the movie
+
+### 3. Test Cases
+Viewmodel, View and UseCase test to make sure nothing is broken when we change their functionality
