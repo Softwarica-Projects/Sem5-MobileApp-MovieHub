@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moviehub/core/bloc/view/bloc_builder_view.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
+import 'package:moviehub/core/helper/ui_helpers.dart';
 import 'package:moviehub/core/routes/routes.dart';
 import 'package:moviehub/core/theme/app_colors.dart';
 import 'package:moviehub/feature/profile/presentation/profile/view_model/user_view_model.dart';
@@ -56,8 +57,10 @@ class ProfileView extends StatelessWidget {
               Spacer(),
               OutlinedButton(
                   onPressed: () {
-                    context.read<UserViewModel>().add(LogoutUserEvent());
-                    Navigator.of(context).pushNamedAndRemoveUntil(Routes.loginPage, (route) => false);
+                    showAlertDialog(context, "Confirm Logout?", "Are you sure you want to logout?", onConfirmPress: () {
+                      context.read<UserViewModel>().add(LogoutUserEvent());
+                      Navigator.of(context).pushNamedAndRemoveUntil(Routes.loginPage, (route) => false);
+                    });
                   },
                   child: Text("Logout")),
               Spacer(),
