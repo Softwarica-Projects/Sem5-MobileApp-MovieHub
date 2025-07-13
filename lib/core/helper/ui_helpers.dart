@@ -103,8 +103,8 @@ Future<dynamic> showAlertDialog(BuildContext context, String title, String conte
       context: context,
       builder: (x) {
         return Dialog(
-            backgroundColor: Colors.white,
-            surfaceTintColor: Colors.white,
+            // backgroundColor: Colors.white,
+            // surfaceTintColor: Colors.white,
             insetPadding: AppDefaults.kPageSidePadding,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4.0),

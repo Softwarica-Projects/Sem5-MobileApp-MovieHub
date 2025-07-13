@@ -40,7 +40,7 @@ class ErrorDialogWidget extends StatelessWidget {
                   },
                   icon: const Icon(
                     Icons.close,
-                    color: Colors.black,
+                    color: Colors.white,
                   ))
             ],
           ),
