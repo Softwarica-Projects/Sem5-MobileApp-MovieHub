@@ -40,9 +40,9 @@ class Themes {
           color: AppColors.kColorDivier,
           thickness: 0.5,
         ),
-        dialogBackgroundColor: Colors.white,
+        dialogBackgroundColor: AppColors.kColorBackground,
         dialogTheme: const DialogTheme(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColors.kColorBackground,
         ),
         listTileTheme: ListTileThemeData(
           tileColor: Colors.white,
