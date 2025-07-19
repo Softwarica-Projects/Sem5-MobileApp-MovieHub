@@ -3,7 +3,6 @@ import 'package:moviehub/core/bloc/view/bloc_builder_view.dart';
 import 'package:moviehub/core/bloc/view/bloc_provider_view.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/core/helper/ui_helpers.dart';
-import 'package:moviehub/feature/home/presentation/recently_added/view_model/recently_added_view_model.dart';
 import 'package:moviehub/feature/home/presentation/releasing_soon/view_model/releasing_soon_view_model.dart';
 import 'package:moviehub/feature/home/presentation/widget/grid_widget/grid_movie_shimmer_row.dart';
 import 'package:moviehub/feature/home/presentation/widget/grid_widget/grid_movie_widget.dart';

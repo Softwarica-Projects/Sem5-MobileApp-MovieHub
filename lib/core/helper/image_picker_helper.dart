@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:moviehub/core/helper/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:moviehub/core/helper/ui_helpers.dart';
 
 void onImagePickerPick(BuildContext context, Function(File) onFileSelected, {Future<String?> Function(String)? validator}) {
   showModalBottomSheet(

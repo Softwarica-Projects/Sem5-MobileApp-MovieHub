@@ -2,26 +2,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:progress_dialog/progress_dialog.dart';
-
-import 'package:moviehub/core/bloc/view/bloc_builder_view.dart';
 import 'package:moviehub/core/bloc/view/bloc_provider_view.dart';
 import 'package:moviehub/core/helper/ui_helpers.dart';
 import 'package:moviehub/core/utility/validator.dart';
 import 'package:moviehub/dependency_inject.dart';
-import 'package:moviehub/feature/movie/presentation/movie_detail/view_model/movie_detail/movie_detail_view_model.dart';
 import 'package:moviehub/feature/movie/presentation/movie_detail/view_model/rating/rate_movie_view_model.dart';
 import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 import 'package:moviehub/shared/widgets/rating_widget.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 
 class RateMovieView extends StatefulWidget {
   final String movieId;
   final Function onSuccess;
   const RateMovieView({
-    Key? key,
+    super.key,
     required this.movieId,
     required this.onSuccess,
-  }) : super(key: key);
+  });
 
   @override
   State<RateMovieView> createState() => _RateMovieViewState();

@@ -1,9 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:moviehub/core/bloc/view/bloc_builder_view.dart';
-import 'package:moviehub/core/bloc/view/bloc_provider_view.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
-import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/favourite/presentation/view_model/fav_movie_list_state.dart';
 import 'package:moviehub/feature/favourite/presentation/view_model/fav_movie_list_view_model.dart';
 import 'package:moviehub/feature/search/presentation/widget/search_movie_widget.dart';

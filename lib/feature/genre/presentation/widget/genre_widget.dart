@@ -1,10 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:moviehub/core/routes/routes.dart';
 import 'package:moviehub/feature/genre/domain/entity/genre_entity.dart';
-
 import 'package:moviehub/shared/widgets/custom_ink_well.dart';
 import 'package:moviehub/shared/widgets/image_widget.dart';
 
