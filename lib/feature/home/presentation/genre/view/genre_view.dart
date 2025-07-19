@@ -10,7 +10,6 @@ import 'package:moviehub/feature/home/presentation/genre/widget/genre_tabs_shimm
 import 'package:moviehub/feature/home/presentation/genre/widget/tab_genre_widget.dart';
 import 'package:moviehub/shared/widgets/custom_ink_well.dart';
 import 'package:moviehub/shared/widgets/form_seperator_box.dart';
-import 'package:moviehub/shared/widgets/view_slider.dart';
 
 class GenreView extends StatelessWidget {
   const GenreView({super.key});

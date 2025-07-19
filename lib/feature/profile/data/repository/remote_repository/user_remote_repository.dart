@@ -1,4 +1,3 @@
-import 'package:moviehub/demodata.dart';
 import 'package:moviehub/feature/profile/data/data_source/remote_datasource/user_remote_datasource.dart';
 import 'package:moviehub/feature/profile/domain/entity/user_entity.dart';
 import 'package:moviehub/feature/profile/domain/repository/user_repository.dart';

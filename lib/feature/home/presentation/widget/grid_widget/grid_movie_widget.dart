@@ -2,23 +2,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-
 import 'package:moviehub/core/routes/routes.dart';
 import 'package:moviehub/core/theme/app_colors.dart';
 import 'package:moviehub/feature/home/presentation/widget/rating_widget.dart';
 import 'package:moviehub/feature/movie/domain/entity/movie_entity.dart';
 import 'package:moviehub/shared/widgets/custom_ink_well.dart';
 import 'package:moviehub/shared/widgets/image_widget.dart';
-import 'package:moviehub/shared/widgets/label_widget.dart';
 
 class GridMovieWidget extends StatelessWidget {
   final MovieEntity data;
   final bool showReleaseDate;
   const GridMovieWidget({
-    Key? key,
+    super.key,
     required this.data,
     this.showReleaseDate = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

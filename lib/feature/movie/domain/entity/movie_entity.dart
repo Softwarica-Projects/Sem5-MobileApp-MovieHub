@@ -2,9 +2,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:moviehub/core/constant/api_url.dart';
 import 'package:moviehub/core/utility/environment.dart';
-
 import 'package:moviehub/shared/model/cast_model.dart';
 import 'package:moviehub/shared/model/review_model.dart';
 

@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviehub/core/bloc/state/bloc_state.dart';
-import 'package:moviehub/feature/home/domain/use_case/get_recently_added_movies_usecase.dart';
 import 'package:moviehub/feature/home/domain/use_case/get_releasing_soon_movies_usecase.dart';
 import 'package:moviehub/feature/movie/domain/entity/movie_entity.dart';
 

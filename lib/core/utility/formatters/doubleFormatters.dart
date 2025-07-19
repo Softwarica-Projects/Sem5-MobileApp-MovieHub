@@ -1,5 +1,5 @@
-import 'package:moviehub/core/utility/regexp/regexp.dart';
 import 'package:flutter/services.dart';
+import 'package:moviehub/core/utility/regexp/regexp.dart';
 
 class DoubleFormatter extends TextInputFormatter {
   @override

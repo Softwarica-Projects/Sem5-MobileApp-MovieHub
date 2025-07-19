@@ -5,7 +5,6 @@ import 'package:moviehub/core/bloc/view/bloc_builder_view.dart';
 import 'package:moviehub/core/bloc/view/bloc_provider_view.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/core/helper/image_picker_helper.dart';
-import 'package:moviehub/core/helper/ui_helpers.dart';
 import 'package:moviehub/core/theme/app_colors.dart';
 import 'package:moviehub/core/utility/validator.dart';
 import 'package:moviehub/feature/profile/domain/entity/user_entity.dart';
@@ -15,10 +14,9 @@ import 'package:moviehub/shared/widgets/circular_image_widget.dart';
 import 'package:moviehub/shared/widgets/custom_ink_well.dart';
 import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 import 'package:moviehub/shared/widgets/form_title_widget.dart';
-import 'package:progress_dialog/progress_dialog.dart';
 
 class EditProfileView extends StatefulWidget {
-  EditProfileView({super.key});
+  const EditProfileView({super.key});
 
   @override
   State<EditProfileView> createState() => _EditProfileViewState();
