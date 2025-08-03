@@ -209,7 +209,7 @@ class _MovieDetailViewState extends State<MovieDetailView> with TickerProviderSt
                       VerticalDivider(),
                       LabelWidget(
                         icon: Icons.star,
-                        label: data.averageRating.toString(),
+                        label: data.averageRating.toStringAsFixed(2),
                         iconColor: Colors.amber,
                       )
                     ],
