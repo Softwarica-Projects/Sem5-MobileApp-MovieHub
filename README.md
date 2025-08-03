@@ -20,6 +20,15 @@
 - **Clean Architecture**
 - **Repository Pattern**
 
+## 🚀 How to Run the Project
+
+### 1. Set the Environment Configuration
+
+Open the file at [lib/core/environment/environment.dart]
+- Update the base URLs for environments:
+- flutter run
+
+
 # Sprint Overview
 
 ## Sprint 1 Features
